@@ -70,7 +70,7 @@ public class FunctionalArchitectureModel {
 		m1.accept(stringPrint);
 		//MyDomParser parser = new MyDomParser();
 		//parser.main(args);
-		
+		System.out.println("github");
 		
 	}
 	
