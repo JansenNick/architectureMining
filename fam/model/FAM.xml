@@ -90,8 +90,8 @@
 			<width>120</width>		
 		</node>	
 
-		<informationFlow source="V" target="S">
-			<name></name>
+		<informationFlow type="infoFlow" source="V" target="S">
+			<name>info1</name>
 		</informationFlow>
 
 	</node>			
