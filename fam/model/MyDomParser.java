@@ -20,7 +20,7 @@ public class MyDomParser {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse("FAM.xml");
+			Document doc = builder.parse("src\\org\\architecturemining\\fam\\model\\FAM.xml");
 			NodeList nodeList = doc.getElementsByTagName("node");
 			
 			//looping through nodeList
