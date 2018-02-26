@@ -30,7 +30,7 @@ public class MyDomParser {
 				Node p = nodeList.item(i);
 				if(p.getNodeType() == Node.ELEMENT_NODE) {
 					Element node = (Element) p;
-					short type = node.getNodeType();
+					//short type = node.getNodeType();
 					NodeList nameList = node.getChildNodes();
 					System.out.println("------------------");
 
@@ -46,13 +46,14 @@ public class MyDomParser {
 								//System.out.println(name.getTagName());
 							//}
 							System.out.println(name.getTagName() + ":" + name.getTextContent());
-
+							//Feature f8 = new Feature(new Point2D.Double(1,1), Integer.parseInt(name.getTextContent()), 3);
+							//System.out.println(name.getTextContent());
+							
 							//type, name.getTagName(), name.getTextContent()
 						}
 					}
 				}
 			}
-			
 			
 			//looping through infoFlowList
 			for(int i=0; i < infoFlowList.getLength() ; i++) {

@@ -1,99 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FAM>
-	<node type="module">
-		<name>A</name>
+	<FAMnode type="module">
+		<name country = "US">A</name>
 		<origin>130,45</origin>
 		<height>124</height>
 		<width>183</width>
 		
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>Q</name>
 			<origin>140,71</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>
-	</node>
+		</FAMnode>
+	</FAMnode>
 	
-	<node type="module">
+	<FAMnode type="module">
 		<name>B</name>
 		<origin>491,45</origin>
 		<height>208</height>
 		<width>365</width>
 		
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>R</name>
 			<origin>520,144</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>
+		</FAMnode>
 
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>P</name>
 			<origin>726,71</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>			
-	</node>
+		</FAMnode>			
+	</FAMnode>
 
-	<node type="module">
+	<FAMnode type="module">
 		<name>C</name>
 		<origin>104,407</origin>
 		<height>213</height>
 		<width>311</width>
 		
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>W</name>
 			<origin>141,428</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>
+		</FAMnode>
 
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>X</name>
 			<origin>287,511</origin>
 			<height>60</height>
 			<width>120</width>
-		</node>		
-	</node>
+		</FAMnode>		
+	</FAMnode>
 
-	<node type="module">
+	<FAMnode type="module">
 		<name>D</name>
 		<origin>492,307</origin>
 		<height>311</height>
 		<width>362</width>
 		
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>T</name>
 			<origin>520,365</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>
+		</FAMnode>
 
-		<node type="feature">
+		<FAMnode type="feature">
 			<name>U</name>
 			<origin>520,512</origin>
 			<height>60</height>
 			<width>120</width>
-	</node>
+		</FAMnode>
 
-		<node type="feature" id="S">
+		<FAMnode type="feature" id="S">
 			<name>S</name>
 			<origin>728,367</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>
+		</FAMnode>
 
-		<node type="feature" id="V">
+		<FAMnode type="feature" id="V">
 			<name>V</name>
 			<origin>728,510</origin>
 			<height>60</height>
 			<width>120</width>		
-		</node>	
-
+		</FAMnode>	
+	</FAMnode>
+	
 		<informationFlow type="infoFlow" source="V" target="S">
 			<name>info1</name>
-		</informationFlow>
-
-	</node>			
+		</informationFlow>	
 	
 </FAM>

@@ -3,7 +3,7 @@ package org.architecturemining.fam.model;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-public class Module extends Node implements Visitable {
+public class Module extends ModelNode implements Visitable {
 
 	private ArrayList<Feature> listFeatures = new ArrayList<Feature>();			
 	

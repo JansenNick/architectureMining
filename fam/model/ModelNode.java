@@ -2,7 +2,7 @@ package org.architecturemining.fam.model;
 
 import java.awt.geom.Point2D;
 
-public abstract class Node {
+public abstract class ModelNode {
 	
 	private String name;
 	private String id;
@@ -11,24 +11,24 @@ public abstract class Node {
 	private int height;	
 	
 	//Node overloading
-	public Node()
+	public ModelNode()
 	{
 	}
 	
-	public Node(String id, String name) 
+	public ModelNode(String id, String name) 
 	{
 		setId(id);
 		setName(name);
 	}
 	
-	public Node(Point2D.Double origin, int width, int height)
+	public ModelNode(Point2D.Double origin, int width, int height)
 	{
 		this.origin = origin;
 		this.width = width;
 		this.height = height;	
 	}
 	
-	public Node(String id, String name, Point2D origin, int width, int height)
+	public ModelNode(String id, String name, Point2D origin, int width, int height)
 	{
 		
 	}
