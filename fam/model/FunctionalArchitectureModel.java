@@ -62,12 +62,13 @@ public class FunctionalArchitectureModel {
 		
 		//visitor testing
 		PrintStringVisitor stringPrint = new PrintStringVisitor();
+		m1.setName("Module 1");
 		f1.setName("Feature 1");
 		f2.setName("Feature 2");
 		i1.setName("Information Flow 1");
+		m1.accept(stringPrint);
 		f1.accept(stringPrint);
 		i1.accept(stringPrint);
-		m1.accept(stringPrint);
 		//MyDomParser parser = new MyDomParser();
 		//parser.main(args);
 		System.out.println("github");

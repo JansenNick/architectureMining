@@ -3,7 +3,7 @@ package org.architecturemining.fam.model;
 class PrintStringVisitor implements Visitor {
 
 	public String visit(Module module) {
-		System.out.println("Module size:" + " Width = " + module.getWidth()+ " Height = " + module.getHeight());
+		System.out.println(module.getName() + " has width = " + module.getWidth()+ " and height = " + module.getHeight());
 		return null;
 	}
 
