@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FAM>
 	<FAMnode type="module">
-		<name country = "US">A</name>
+		<name>A</name>
 		<origin>130,45</origin>
 		<height>124</height>
 		<width>183</width>
