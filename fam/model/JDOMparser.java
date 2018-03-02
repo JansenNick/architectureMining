@@ -46,7 +46,7 @@ private static void readXML() {
 			
 			System.out.println(moduleEle.getAttributeValue("type") + " " + moduleEle.getChildText("name"));
 			System.out.println("Origin: " + moduleEle.getChildText("origin"));
-			System.out.println("Height: " + moduleEle.getChildText("heigth"));
+			System.out.println("Height: " + moduleEle.getChildText("height"));
 			System.out.println("Width: " + moduleEle.getChildText("width"));
 			System.out.println("Has features:");
 			
@@ -54,7 +54,7 @@ private static void readXML() {
 				
 				System.out.println("\t" + featureEle.getAttributeValue("type") + " " + featureEle.getChildText("name"));
 				System.out.println("\t" + "Origin: " + featureEle.getChildText("origin"));
-				System.out.println("\t" + "Height: " + featureEle.getChildText("heigth"));
+				System.out.println("\t" + "Height: " + featureEle.getChildText("height"));
 				System.out.println("\t" + "Width: " + featureEle.getChildText("width"));				
 			}
 			
