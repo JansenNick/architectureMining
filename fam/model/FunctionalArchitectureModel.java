@@ -28,14 +28,21 @@ public class FunctionalArchitectureModel {
 	
 	private ArrayList<Module> listModules = new ArrayList<Module>();
 	private ArrayList<InfoFlow> listInfoFlow = new ArrayList<InfoFlow>();
-
+	
+	
+	private int sourceModule;
+	private int sourceFeature;
+	private  int targetModule;
+	private int targetFeature;
+	
+	
 	public void addModule(Module m)
 	{
-		listModules.add(m);
+		getListModules().add(m);
 	}
 	
 	public void addInfoFlow(InfoFlow i) {
-		listInfoFlow.add(i);
+		getListInfoFlow().add(i);
 	}
 	
 	public static void main (String[] args) {
@@ -44,15 +51,74 @@ public class FunctionalArchitectureModel {
 		
 		JDOMparser.main(fam);
 		
-		for(int i = 0 ; i < fam.listModules.size(); i++) {
-			System.out.println("Module Origin:");
-			System.out.println(fam.listModules.get(i).getOrigin());
+		for(int i = 0 ; i < fam.getListModules().size(); i++) {
+			System.out.println("Module name:");
+			System.out.println(fam.getListModules().get(i).getName());
 			
-			for(int j = 0; j < fam.listModules.get(i).getFeatureList().size(); j++) {
-				System.out.println("Feature width");			
-				System.out.println(fam.listModules.get(i).getFeatureList().get(j).getWidth());
+			for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
+				System.out.println("\t" +"Feature name:");			
+				System.out.println("\t" +fam.getListModules().get(i).getFeatureList().get(j).getName());
 				
 			}			
-		}		
-	}	
+		}
+		
+		for(int i = 0 ; i < fam.getListInfoFlow().size(); i++) {
+			System.out.println("InfoFlow name:");			
+			System.out.println(fam.getListInfoFlow().get(i).getName());
+			System.out.println("InfoFlow source :");			
+			System.out.println(fam.getListInfoFlow().get(i).getSource().getName()); 
+			System.out.println("InfoFlow target :");		
+			System.out.println(fam.getListInfoFlow().get(i).getTarget().getName());
+		
+		}
+	}
+
+	public ArrayList<Module> getListModules() {
+		return listModules;
+	}
+
+	public void setListModules(ArrayList<Module> listModules) {
+		this.listModules = listModules;
+	}
+	
+	public ArrayList<InfoFlow> getListInfoFlow() {
+		return listInfoFlow;
+	}
+	
+	public void setListInfoFlow(ArrayList<InfoFlow> listInfoFlow) {
+		this.listInfoFlow = listInfoFlow;
+	}
+
+	public int getSourceModule() {
+		return sourceModule;
+	}
+
+	public void setSourceModule(int sourceModule) {
+		this.sourceModule = sourceModule;
+	}
+
+	public int getSourceFeature() {
+		return sourceFeature;
+	}
+
+	public void setSourceFeature(int sourceFeature) {
+		this.sourceFeature = sourceFeature;
+	}
+
+	public int getTargetModule() {
+		return targetModule;
+	}
+
+	public void setTargetModule(int targetModule) {
+		this.targetModule = targetModule;
+	}
+
+	public int getTargetFeature() {
+		return targetFeature;
+	}
+
+	public void setTargetFeature(int targetFeature) {
+		this.targetFeature = targetFeature;
+	}
+	
 }

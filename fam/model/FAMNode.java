@@ -30,7 +30,11 @@ public abstract class FAMNode {
 	
 	public FAMNode(String id, String name, Point2D origin, int width, int height)
 	{
-		
+		this.id = id;
+		this.name = name;
+		this.origin = origin;
+		this.width = width;
+		this.height = height;	
 	}
 	
 	//getters and setters

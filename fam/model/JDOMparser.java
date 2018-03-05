@@ -42,12 +42,14 @@ private static void readXML(FunctionalArchitectureModel fam) {
 		
 		for (Element moduleEle : root.getChildren("FAMnode")) {
 			
-			Module m1 = new Module(new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
-													  Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
-													  Integer.parseInt(moduleEle.getChildText("width")), 
-													  Integer.parseInt(moduleEle.getChildText("height")));
+			Module module = new Module("3", 
+									   moduleEle.getChildText("name"),
+									   new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+													      Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
+									   Integer.parseInt(moduleEle.getChildText("width")), 
+									   Integer.parseInt(moduleEle.getChildText("height")));
 			
-			fam.addModule(m1);
+			fam.addModule(module);
 			
 			System.out.println(moduleEle.getAttributeValue("type") + " " + moduleEle.getChildText("name"));
 			System.out.println("Origin: " + moduleEle.getChildText("origin"));
@@ -57,11 +59,14 @@ private static void readXML(FunctionalArchitectureModel fam) {
 			
 			for (Element featureEle : moduleEle.getChildren("FAMnode")) {
 				
-				Feature f1 = new Feature(new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
-						  									Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])), 
-															Integer.parseInt(featureEle.getChildText("width")), 
-															Integer.parseInt(featureEle.getChildText("height")));
-				m1.addFeature(f1);
+				Feature feature = new Feature(	"5", 
+												featureEle.getChildText("name"), 
+												new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+						  									  	   Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])), 
+												Integer.parseInt(featureEle.getChildText("width")), 
+												Integer.parseInt(featureEle.getChildText("height")));
+				
+				module.addFeature(feature);
 				
 				System.out.println("\t" + featureEle.getAttributeValue("type") + " " + featureEle.getChildText("name"));
 				System.out.println("\t" + "Origin: " + featureEle.getChildText("origin"));
@@ -72,14 +77,42 @@ private static void readXML(FunctionalArchitectureModel fam) {
 			System.out.println("---------------------");
 		}
 		
+		//doesn't save i and j in these variables, because variables have to be final in a static class
+		
+		
+		//first create infoflow in list and then add source and target to it is not working either
+
 		for (Element lineEle : root.getChildren("line")) {
+		InfoFlow infoFlow = new InfoFlow(lineEle.getChildText("name"));		
+		fam.addInfoFlow(infoFlow);		
+			for(int i = 0 ; i < fam.getListModules().size(); i++) {
+				
+				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
+					
+					//check for right feature
+					if(lineEle.getAttributeValue("source").equals(fam.getListModules().get(i).getFeatureList().get(j).getName())){
+						for(int p = 0 ; p < fam.getListInfoFlow().size(); p++) {
+							if (fam.getListInfoFlow().get(p).getName() == lineEle.getChildText("name")) {
+								fam.getListInfoFlow().get(p).setSource(fam.getListModules().get(i).getFeatureList().get(j));
+							}
+						}
+					}
+					
+					if(lineEle.getAttributeValue("target").equals(fam.getListModules().get(i).getFeatureList().get(j).getName())){
+						for(int p = 0 ; p < fam.getListInfoFlow().size(); p++) {
+							if (fam.getListInfoFlow().get(p).getName() == lineEle.getChildText("name")) {
+								fam.getListInfoFlow().get(p).setTarget(fam.getListModules().get(i).getFeatureList().get(j));
+							}
+						}
+					}
+				}
+			}
 			
 			System.out.println(lineEle.getAttributeValue("type") + " " + lineEle.getChildText("name"));	
 			System.out.println("Source: " + lineEle.getAttributeValue("source"));
 			System.out.println("Target: " + lineEle.getAttributeValue("target"));
-			System.out.println("---------------------");
+			System.out.println("---------------------");			
 		}
-	
 }
 
 private static void writeXML() {
@@ -93,16 +126,16 @@ private static void writeXML() {
 	//Gaat alleen mis bij het creeren van een feature omdat je dan de naam van een child van theRoot moet hebben
 	//Echter geef ik dergelijke childs nergens een naam
 	//creation of modules
-	Element moduleA = createFAMnode("module", "A", "130,45", "60", "120");
+	Element moduleA = createFAMnode("module", "A", "130,45", "66", "120");
 	Element moduleB = createFAMnode("module", "B", "491,45", "208", "365");
 	
 	//creation of features
-	Element featureQ = createFAMnode("feature", "Q", "140,71", "60", "120");
-	Element featureR = createFAMnode("feature", "R", "520,144", "60", "120");
-	Element featureP = createFAMnode("feature", "P", "726,71", "60", "120");
+	Element featureQ = createFAMnode("feature", "Q", "140,71", "63", "120");
+	Element featureR = createFAMnode("feature", "R", "520,144", "123", "120");
+	Element featureP = createFAMnode("feature", "P", "726,71", "354", "120");
 	
 	//creation of lines
-	Element line1 = createLine("infoFlow","infoFlow1", "V", "S");
+	Element line1 = createLine("infoFlow","infoFlow1", "R", "P");
 	
 	//adding features to modules
 	moduleA.addContent(featureQ);

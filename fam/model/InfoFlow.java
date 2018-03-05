@@ -10,9 +10,19 @@ public class InfoFlow implements Visitable {
 	 * @param source is the starting point of an information flow
 	 * @param target is the ending point of an information flow
 	 */
+	public InfoFlow(String name) {
+		this.name = name;
+	}
+	
 	public InfoFlow(Feature source, Feature target) {
 		this.source = source;
 		this.target = target;
+	}
+	
+	public InfoFlow(Feature source, Feature target, String name) {
+		this.source = source;
+		this.target = target;
+		this.name = name;
 	}
 	
 	public String accept(Visitor visitor) {

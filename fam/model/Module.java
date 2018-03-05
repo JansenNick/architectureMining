@@ -11,6 +11,12 @@ public class Module extends FAMNode implements Visitable {
 	{ 
 		super(point, width , height);
 	}
+	
+	public Module(String id, String name, Point2D.Double point, int width, int height)
+	{ 
+		super(id, name, point, width , height);
+	}
+
 
 	public void addFeature(Feature feature)
 	{
