@@ -42,8 +42,7 @@ private static void readXML() {
 		for (Element moduleEle : root.getChildren("FAMnode")) {
 			
 			//Module m1 = new Module(new Point2D.Double(0,0), Integer.parseInt(moduleEle.getChildText("heigth")), Integer.parseInt(moduleEle.getChildText("width")));
-			
-			
+					
 			System.out.println(moduleEle.getAttributeValue("type") + " " + moduleEle.getChildText("name"));
 			System.out.println("Origin: " + moduleEle.getChildText("origin"));
 			System.out.println("Height: " + moduleEle.getChildText("heigth"));
