@@ -1,5 +1,6 @@
 package org.architecturemining.fam.model;
 
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,15 +15,15 @@ import org.jdom2.output.XMLOutputter;
 
 public class JDOMparser {
 	
-public static void main(String[] args) {
+public static void main(FunctionalArchitectureModel fam) {
 	
 	writeXML();
 	
-	readXML();
+	readXML(fam);
 	
 	}
 
-private static void readXML() {
+private static void readXML(FunctionalArchitectureModel fam) {
 	
 	SAXBuilder builder = new SAXBuilder();
 		
@@ -41,19 +42,30 @@ private static void readXML() {
 		
 		for (Element moduleEle : root.getChildren("FAMnode")) {
 			
-			//Module m1 = new Module(new Point2D.Double(0,0), Integer.parseInt(moduleEle.getChildText("heigth")), Integer.parseInt(moduleEle.getChildText("width")));
-					
+			Module m1 = new Module(new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+													  Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
+													  Integer.parseInt(moduleEle.getChildText("width")), 
+													  Integer.parseInt(moduleEle.getChildText("height")));
+			
+			fam.addModule(m1);
+			
 			System.out.println(moduleEle.getAttributeValue("type") + " " + moduleEle.getChildText("name"));
 			System.out.println("Origin: " + moduleEle.getChildText("origin"));
-			System.out.println("Height: " + moduleEle.getChildText("heigth"));
+			System.out.println("Height: " + moduleEle.getChildText("height"));
 			System.out.println("Width: " + moduleEle.getChildText("width"));
 			System.out.println("Has features:");
 			
 			for (Element featureEle : moduleEle.getChildren("FAMnode")) {
 				
+				Feature f1 = new Feature(new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+						  									Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])), 
+															Integer.parseInt(featureEle.getChildText("width")), 
+															Integer.parseInt(featureEle.getChildText("height")));
+				m1.addFeature(f1);
+				
 				System.out.println("\t" + featureEle.getAttributeValue("type") + " " + featureEle.getChildText("name"));
 				System.out.println("\t" + "Origin: " + featureEle.getChildText("origin"));
-				System.out.println("\t" + "Height: " + featureEle.getChildText("heigth"));
+				System.out.println("\t" + "Height: " + featureEle.getChildText("height"));
 				System.out.println("\t" + "Width: " + featureEle.getChildText("width"));				
 			}
 			

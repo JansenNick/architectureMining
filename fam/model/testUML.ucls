@@ -58,7 +58,7 @@
   </class>  
   <interface id="7" language="java" name="org.architecturemining.fam.model.Visitable" project="Workshop" 
     file="/Workshop/src/org/architecturemining/fam/model/Visitable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="749" y="829"/>    
+    <position height="-1" width="-1" x="767" y="792"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

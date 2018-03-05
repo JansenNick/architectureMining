@@ -20,5 +20,9 @@ public class Module extends FAMNode implements Visitable {
 	public String accept(Visitor visitor) {
 		return visitor.visit(this);
 	}
+	
+	public ArrayList<Feature> getFeatureList() {
+		return listFeatures;
+	}
 
 }

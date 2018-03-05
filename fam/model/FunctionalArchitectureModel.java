@@ -1,6 +1,5 @@
 package org.architecturemining.fam.model;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import org.processmining.contexts.uitopia.annotations.UITopiaVariant;
@@ -40,39 +39,20 @@ public class FunctionalArchitectureModel {
 	}
 	
 	public static void main (String[] args) {
-		//creation of the Functional architecture model
+
 		FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
 		
-		//creation of an module + adding it to the list of the FAM
-		Module m1 = new Module(new Point2D.Double(0,0), 10, 10);
-		fam.addModule(m1);
+		JDOMparser.main(fam);
 		
-		//creation of 2 features + adding them to the list of the module m1
-		Feature f1 = new Feature(new Point2D.Double(1,1), 3, 3);
-		Feature f2 = new Feature(new Point2D.Double(5,1), 3, 3);
-		m1.addFeature(f1);
-		m1.addFeature(f2);
-		
-		//creation of an InfoFlow + adding it to the lijstInfoFlow
-		InfoFlow i1 = new InfoFlow(f1,f2);
-		fam.addInfoFlow(i1);
-		
-		//test
-		System.out.println("testnick");
-		
-		//visitor testing
-		PrintStringVisitor stringPrint = new PrintStringVisitor();
-		m1.setName("Module 1");
-		f1.setName("Feature 1");
-		f2.setName("Feature 2");
-		i1.setName("Information Flow 1");
-		m1.accept(stringPrint);
-		f1.accept(stringPrint);
-		i1.accept(stringPrint);
-		//MyDomParser parser = new MyDomParser();
-		//parser.main(args);
-		System.out.println("github");
-		
-	}
-	
+		for(int i = 0 ; i < fam.listModules.size(); i++) {
+			System.out.println("Module Origin:");
+			System.out.println(fam.listModules.get(i).getOrigin());
+			
+			for(int j = 0; j < fam.listModules.get(i).getFeatureList().size(); j++) {
+				System.out.println("Feature width");			
+				System.out.println(fam.listModules.get(i).getFeatureList().get(j).getWidth());
+				
+			}			
+		}		
+	}	
 }
