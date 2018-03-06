@@ -2,39 +2,20 @@ package org.architecturemining.fam.model;
 
 import java.util.ArrayList;
 
-import org.processmining.contexts.uitopia.annotations.UITopiaVariant;
-import org.processmining.framework.plugin.PluginContext;
-import org.processmining.framework.plugin.annotations.Plugin;
-
 public class FunctionalArchitectureModel {
-
-    @Plugin(
-            name = "Log Generator FAM", 
-            parameterLabels = {}, 
-            returnLabels = { "Log file" }, 
-            returnTypes = { String.class }, 
-            userAccessible = true, 
-            help = "Produces a log file for a functional architecture model based on user input"
-    )
-    @UITopiaVariant(
-            affiliation = "University of Utrecht", 
-            author = "Nick Jansen", 
-            email = "n.jansen2@students.uu.nl"
-    )
-    
-    public static String helloWorld(PluginContext context) {
-            return "Hello World!";
-    }
 	
 	private ArrayList<Module> listModules = new ArrayList<Module>();
 	private ArrayList<InfoFlow> listInfoFlow = new ArrayList<InfoFlow>();
-	
 	
 	private int sourceModule;
 	private int sourceFeature;
 	private  int targetModule;
 	private int targetFeature;
 	
+	
+	public static void main (String[] args) {
+	
+	}
 	
 	public void addModule(Module m)
 	{
@@ -43,34 +24,6 @@ public class FunctionalArchitectureModel {
 	
 	public void addInfoFlow(InfoFlow i) {
 		getListInfoFlow().add(i);
-	}
-	
-	public static void main (String[] args) {
-
-		FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
-		
-		JDOMparser.main(fam);
-		
-		for(int i = 0 ; i < fam.getListModules().size(); i++) {
-			System.out.println("Module name:");
-			System.out.println(fam.getListModules().get(i).getName());
-			
-			for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
-				System.out.println("\t" +"Feature name:");			
-				System.out.println("\t" +fam.getListModules().get(i).getFeatureList().get(j).getName());
-				
-			}			
-		}
-		
-		for(int i = 0 ; i < fam.getListInfoFlow().size(); i++) {
-			System.out.println("InfoFlow name:");			
-			System.out.println(fam.getListInfoFlow().get(i).getName());
-			System.out.println("InfoFlow source :");			
-			System.out.println(fam.getListInfoFlow().get(i).getSource().getName()); 
-			System.out.println("InfoFlow target :");		
-			System.out.println(fam.getListInfoFlow().get(i).getTarget().getName());
-		
-		}
 	}
 
 	public ArrayList<Module> getListModules() {
