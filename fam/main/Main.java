@@ -38,7 +38,7 @@ public class Main{
 	
 	ConsoleDemo.main(fam);
 	
-	Window.createWindow();
+	Window.main(fam);;
 	
 	}
 }
