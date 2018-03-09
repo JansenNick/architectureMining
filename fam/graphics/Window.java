@@ -25,14 +25,33 @@ public class Window extends JFrame {
 	}
 	
 	public Window(){
+			FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
+			
+			WriteXML.main();
+			ReadXML.main(fam);
+			
+			ConsoleDemo.main(fam);
 			
 			this.setSize(1000, 1000);
 			
-			this.setTitle("Drawing Shapes");
+			this.setTitle("Functional Architecture Model");
 			
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			this.add(new DrawStuff(), BorderLayout.CENTER);
+			
+			/*for(int i = 0 ; i < fam.getListModules().size(); i++) {
+				
+				this.add(fam.getListModules().get(i));
+				
+				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
+					
+					this.add(fam.getListModules().get(i).getFeatureList().get(j));
+					
+				}
+			}*/
+			
+			//this.add(fam.getListModules().get(0));
 			
 			this.setVisible(true);
 		}
@@ -52,7 +71,7 @@ public class Window extends JFrame {
 			
 			ConsoleDemo.main(fam);
 			
-			Graphics2D graph2 = (Graphics2D)g;		
+			Graphics2D graph2 = (Graphics2D)g;
 			
 			for(int i = 0 ; i < fam.getListModules().size(); i++) {
 				
@@ -60,6 +79,9 @@ public class Window extends JFrame {
 													(float) fam.getListModules().get(i).getOrigin().getY(), 
 													fam.getListModules().get(i).getWidth(), 
 													fam.getListModules().get(i).getHeight()	));
+				graph2.drawString(	fam.getListModules().get(i).getName(),
+								  	(int)fam.getListModules().get(i).getOrigin().getX() + 7, 
+								  	(int)fam.getListModules().get(i).getOrigin().getY() + 15);
 						
 				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
 
@@ -67,15 +89,14 @@ public class Window extends JFrame {
 														(float) fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY(), 
 														fam.getListModules().get(i).getFeatureList().get(j).getWidth(), 
 														fam.getListModules().get(i).getFeatureList().get(j).getHeight() ));
+					graph2.drawString(	fam.getListModules().get(i).getFeatureList().get(j).getName(),
+						  				(int)fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() + 7, 
+						  				(int)fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY() + 15 );
 				}	
 			}		
-		}		
-	
-
+		}
 		
-	}
-
-	
+	} 
 }
 
 

@@ -1,6 +1,7 @@
 package org.architecturemining.fam.model;
 import java.awt.geom.Point2D;
 
+@SuppressWarnings("serial")
 public class Feature extends FAMNode implements Visitable {
 	
 	public Feature(Point2D.Double point, int width, int height) {

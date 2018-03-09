@@ -3,6 +3,7 @@ package org.architecturemining.fam.model;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Module extends FAMNode implements Visitable {
 
 	private ArrayList<Feature> listFeatures = new ArrayList<Feature>();			
@@ -30,5 +31,8 @@ public class Module extends FAMNode implements Visitable {
 	public ArrayList<Feature> getFeatureList() {
 		return listFeatures;
 	}
+	
+
+	
 
 }

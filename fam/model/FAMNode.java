@@ -1,8 +1,14 @@
 package org.architecturemining.fam.model;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-public abstract class FAMNode {
+import javax.swing.JComponent;
+
+@SuppressWarnings("serial")
+public abstract class FAMNode extends JComponent {
 	
 	private String name;
 	private String id;
@@ -81,4 +87,15 @@ public abstract class FAMNode {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
+	public void paint(Graphics g){		
+		
+		Graphics2D graph2 = (Graphics2D)g;
+			
+			graph2.draw(new Ellipse2D.Float(	(float)this.getOrigin().getX(),
+												(float)this.getOrigin().getY(), 
+												this.getWidth(), 
+												this.getHeight()	));	
+	}
+	
 }
