@@ -8,6 +8,9 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import org.architecturemining.fam.IO.ReadXML;
+import org.architecturemining.fam.IO.WriteXML;
+import org.architecturemining.fam.model.ConsoleDemo;
 import org.architecturemining.fam.model.FunctionalArchitectureModel;
 
 @SuppressWarnings("serial")
@@ -15,15 +18,15 @@ import org.architecturemining.fam.model.FunctionalArchitectureModel;
 
 public class Window extends JFrame {
 	
-	public static void main(FunctionalArchitectureModel fam){
+	public static void main(){
 		
-		new Window(fam);
+		new Window();
 		
 	}
 	
-	public Window(FunctionalArchitectureModel fam){
+	public Window(){
 			
-			this.setSize(500, 500);
+			this.setSize(1000, 1000);
 			
 			this.setTitle("Drawing Shapes");
 			
@@ -32,7 +35,6 @@ public class Window extends JFrame {
 			this.add(new DrawStuff(), BorderLayout.CENTER);
 			
 			this.setVisible(true);
-			
 		}
 	
 //Creating my own component by extending JComponent
@@ -40,33 +42,40 @@ public class Window extends JFrame {
 	
 	private class DrawStuff extends JComponent{
 		
-		// Graphics is the base class that allows for drawing on components
-		
+		// Graphics is the base class that allows for drawing on components	
 		public void paint(Graphics g){		
-				
+			
+			FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
+			
+			WriteXML.main();
+			ReadXML.main(fam);
+			
+			ConsoleDemo.main(fam);
+			
 			Graphics2D graph2 = (Graphics2D)g;		
-		
-			graph2.fill(new Rectangle2D.Float(10, 10, 150, 100));
-					
-		}
-		
-	}
-	
-	
-	public static void createWindow(FunctionalArchitectureModel fam) {
-		//1. Create the frame.
-		JFrame frame = new JFrame("FrameDemo");
+			
+			for(int i = 0 ; i < fam.getListModules().size(); i++) {
+				
+				graph2.draw(new Rectangle2D.Float(	(float) fam.getListModules().get(i).getOrigin().getX(),
+													(float) fam.getListModules().get(i).getOrigin().getY(), 
+													fam.getListModules().get(i).getWidth(), 
+													fam.getListModules().get(i).getHeight()	));
+						
+				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
 
-		//2. Optional: What happens when the frame closes?
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					graph2.draw(new Rectangle2D.Float(	(float) fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX(),
+														(float) fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY(), 
+														fam.getListModules().get(i).getFeatureList().get(j).getWidth(), 
+														fam.getListModules().get(i).getFeatureList().get(j).getHeight() ));
+				}	
+			}		
+		}		
+	
 
-		//4. Size the frame.
-		frame.pack();
-		//5. Show it.
-		frame.setVisible(true);
-		frame.setBounds(0, 0, 1200, 800);
-		
 		
 	}
 
+	
 }
+
+

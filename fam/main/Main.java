@@ -1,10 +1,6 @@
 package org.architecturemining.fam.main;
 
-import org.architecturemining.fam.IO.ReadXML;
-import org.architecturemining.fam.IO.WriteXML;
 import org.architecturemining.fam.graphics.Window;
-import org.architecturemining.fam.model.ConsoleDemo;
-import org.architecturemining.fam.model.FunctionalArchitectureModel;
 import org.processmining.contexts.uitopia.annotations.UITopiaVariant;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.framework.plugin.annotations.Plugin;
@@ -30,15 +26,8 @@ public class Main{
     }
 	
 	public static void main (String[] args) {
-	
-	FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
-	
-	WriteXML.main();
-	ReadXML.main(fam);
-	
-	ConsoleDemo.main(fam);
-	
-	Window.main(fam);;
+		
+	Window.main();;
 	
 	}
 }

@@ -27,14 +27,22 @@ private static void writeXML() {
 	//Mogelijk modules/features/lines niet eerst in Elements op te slaan door parent mee te geven aan de functie
 	//Gaat alleen mis bij het creeren van een feature omdat je dan de naam van een child van theRoot moet hebben
 	//Echter geef ik dergelijke childs nergens een naam
-	//creation of modules
-	Element moduleA = createFAMnode("module", "A", "130,45", "66", "120");
+	//creation of modules, type, name, origin, height, width
+	Element moduleA = createFAMnode("module", "A", "130,45", "124", "183");
 	Element moduleB = createFAMnode("module", "B", "491,45", "208", "365");
+	Element moduleC = createFAMnode("module", "C", "104,407", "213", "311");
+	Element moduleD = createFAMnode("module", "D", "492,307", "311", "362");
 	
 	//creation of features
-	Element featureQ = createFAMnode("feature", "Q", "140,71", "63", "120");
-	Element featureR = createFAMnode("feature", "R", "520,144", "123", "120");
-	Element featureP = createFAMnode("feature", "P", "726,71", "354", "120");
+	Element featureQ = createFAMnode("feature", "Q", "140,71", "60", "120");
+	Element featureR = createFAMnode("feature", "R", "520,144", "60", "120");
+	Element featureP = createFAMnode("feature", "P", "726,71", "60", "120");
+	Element featureW = createFAMnode("feature", "W", "141,428", "60", "120");	
+	Element featureX = createFAMnode("feature", "X", "287,511", "60", "120");
+	Element featureT = createFAMnode("feature", "T", "520,365", "60", "120");
+	Element featureU = createFAMnode("feature", "U", "520,512", "60", "120");
+	Element featureS = createFAMnode("feature", "S", "728,367", "60", "120");
+	Element featureV = createFAMnode("feature", "V", "728,510", "60", "120");
 	
 	//creation of lines
 	Element line1 = createLine("infoFlow","infoFlow1", "R", "P");
@@ -43,12 +51,21 @@ private static void writeXML() {
 	moduleA.addContent(featureQ);
 	moduleB.addContent(featureR);
 	moduleB.addContent(featureP);
+	moduleC.addContent(featureW);
+	moduleC.addContent(featureX);
+	moduleD.addContent(featureT);
+	moduleD.addContent(featureU);
+	moduleD.addContent(featureS);
+	moduleD.addContent(featureV);
 	
 	//adding modules and lines to root
 	theRoot.addContent(moduleA);
 	theRoot.addContent(moduleB);
-	theRoot.addContent(line1);
+	theRoot.addContent(moduleC);
+	theRoot.addContent(moduleD);
 	
+	theRoot.addContent(line1);
+
 	XMLOutputter xmlOutput = new XMLOutputter(Format.getPrettyFormat());
 	
 	xmlOutput.output(doc, new FileOutputStream(new File("./src/jdomMade.xml")));
