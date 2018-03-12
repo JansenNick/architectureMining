@@ -16,7 +16,7 @@ public abstract class FAMNode extends JComponent {
 	private int width;
 	private int height;	
 	
-	//Node overloading
+	//Node overloading 
 	public FAMNode()
 	{
 	}

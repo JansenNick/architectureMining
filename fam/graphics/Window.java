@@ -3,6 +3,9 @@ package org.architecturemining.fam.graphics;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JComponent;
@@ -16,19 +19,20 @@ import org.architecturemining.fam.model.FunctionalArchitectureModel;
 @SuppressWarnings("serial")
 
 
-public class Window extends JFrame {
+public class Window extends JFrame implements MouseListener {
+	
+	FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
 	
 	public static void main(){
 		
 		new Window();
-		
+
 	}
 	
 	public Window(){
-			FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
-			
-			WriteXML.main();
-			ReadXML.main(fam);
+		
+			WriteXML.main(); 
+			ReadXML.readXML(fam);
 			
 			ConsoleDemo.main(fam);
 			
@@ -40,36 +44,15 @@ public class Window extends JFrame {
 			
 			this.add(new DrawStuff(), BorderLayout.CENTER);
 			
-			/*for(int i = 0 ; i < fam.getListModules().size(); i++) {
-				
-				this.add(fam.getListModules().get(i));
-				
-				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
-					
-					this.add(fam.getListModules().get(i).getFeatureList().get(j));
-					
-				}
-			}*/
-			
-			//this.add(fam.getListModules().get(0));
-			
 			this.setVisible(true);
+			
+			addMouseListener(this);
 		}
-	
-//Creating my own component by extending JComponent
-	// JComponent is the base class for all swing components. Even custom ones
 	
 	private class DrawStuff extends JComponent{
 		
 		// Graphics is the base class that allows for drawing on components	
 		public void paint(Graphics g){		
-			
-			FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
-			
-			WriteXML.main();
-			ReadXML.main(fam);
-			
-			ConsoleDemo.main(fam);
 			
 			Graphics2D graph2 = (Graphics2D)g;
 			
@@ -93,8 +76,69 @@ public class Window extends JFrame {
 						  				(int)fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() + 7, 
 						  				(int)fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY() + 15 );
 				}	
-			}		
+			}
+			
+			for(int i = 0 ; i < fam.getListInfoFlow().size(); i++) {
+				
+				graph2.draw( new Line2D.Double(	fam.getListInfoFlow().get(i).getSource().getOrigin().getX() + fam.getListInfoFlow().get(i).getSource().getWidth()/2, 
+												fam.getListInfoFlow().get(i).getSource().getOrigin().getY() + fam.getListInfoFlow().get(i).getSource().getHeight()/2, 
+												fam.getListInfoFlow().get(i).getTarget().getOrigin().getX() + fam.getListInfoFlow().get(i).getTarget().getWidth()/2, 
+												fam.getListInfoFlow().get(i).getTarget().getOrigin().getY() + fam.getListInfoFlow().get(i).getTarget().getHeight()/2
+												));
+				
+			}	
 		}
+	}
+
+
+
+	
+	public void mouseClicked(MouseEvent e) {
+		
+		for(int i = 0 ; i < 	fam.getListModules().size(); i++) {
+			for(int j = 0; j < 	fam.getListModules().get(i).getFeatureList().size(); j++) {
+				if(	(int)		fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() > e.getX()  ) {
+					System.out.println("Clicked feature: " + fam.getListModules().get(i).getFeatureList().get(j).getName());
+					/*if(((int)	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() +
+								fam.getListModules().get(i).getFeatureList().get(j).getWidth()) < e.getX()) {
+					
+					System.out.println("Clicked feature: " + fam.getListModules().get(i).getFeatureList().get(j).getName());
+					}
+					
+					System.out.println("test");
+					System.out.println(		((int)	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() +
+											fam.getListModules().get(i).getFeatureList().get(j).getWidth()));
+					System.out.println(e.getX());
+					//System.out.println("test");*/
+					
+				}
+			}
+		}
+		
+		System.out.println("click" + e.getX());
+		
+		
+		
+
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	} 
 }

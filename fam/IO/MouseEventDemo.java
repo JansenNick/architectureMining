@@ -78,7 +78,9 @@ public class MouseEventDemo extends JPanel implements MouseListener {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+     
+
+        	public void run() {
                 createAndShowGUI();
             }
         });
@@ -129,7 +131,7 @@ public class MouseEventDemo extends JPanel implements MouseListener {
                 + "." + NEWLINE);
         textArea.setCaretPosition(textArea.getDocument().getLength());
     }
-    
+     
     public void mousePressed(MouseEvent e) {
         eventOutput("Mouse pressed (# of clicks: "
                 + e.getClickCount() + ")" + e.getX() +" " + e.getY(), e);
