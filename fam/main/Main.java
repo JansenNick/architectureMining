@@ -53,7 +53,6 @@ public class Main{
 	 
 	 
 	 @Visualizer
-	 
      public JComponent visualize(PluginContext context, FunctionalArchitectureModel fam) {
 		 
 		 return new JLabel("FAM");

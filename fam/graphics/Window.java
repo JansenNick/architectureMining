@@ -94,51 +94,47 @@ public class Window extends JFrame implements MouseListener {
 
 	
 	public void mouseClicked(MouseEvent e) {
+		checkHit(e.getX(), e.getY());
+	}
+	
+	public void checkHit(int x, int y) {
 		
 		for(int i = 0 ; i < 	fam.getListModules().size(); i++) {
 			for(int j = 0; j < 	fam.getListModules().get(i).getFeatureList().size(); j++) {
-				if(	(int)		fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() > e.getX()  ) {
-					System.out.println("Clicked feature: " + fam.getListModules().get(i).getFeatureList().get(j).getName());
-					/*if(((int)	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() +
-								fam.getListModules().get(i).getFeatureList().get(j).getWidth()) < e.getX()) {
-					
-					System.out.println("Clicked feature: " + fam.getListModules().get(i).getFeatureList().get(j).getName());
-					}
-					
-					System.out.println("test");
-					System.out.println(		((int)	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() +
-											fam.getListModules().get(i).getFeatureList().get(j).getWidth()));
-					System.out.println(e.getX());
-					//System.out.println("test");*/
-					
+				
+				if(	//clicked point is larger than left border
+							fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() 		< x) {
+				if(	//clicked point is smaller than right border	
+							fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX() +
+							fam.getListModules().get(i).getFeatureList().get(j).getWidth() 				> x) {
+				if(	//clicked point is larger than top border
+							fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY() 		< y) {
+				if(	//clicked point is smaller than bottom border
+							fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY() +
+							fam.getListModules().get(i).getFeatureList().get(j).getHeight() 			> y) {
+						
+				System.out.println("Clicked feature: " + fam.getListModules().get(i).getFeatureList().get(j).getName());
+				}
+				}
+				}
 				}
 			}
 		}
-		
-		System.out.println("click" + e.getX());
-		
-		
-		
-
 	}
 
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	} 
 }
