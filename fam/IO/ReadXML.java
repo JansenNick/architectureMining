@@ -44,10 +44,10 @@ private static FunctionalArchitectureModel buildFromSAX(Document doc) throws Fam
 		//Parsing of Modules
 		Module module = new Module("3", 
 								   moduleEle.getChildText("name"),
-								   new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
-												      Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
-								   Integer.parseInt(moduleEle.getChildText("width")), 
-								   Integer.parseInt(moduleEle.getChildText("height")));
+								   new Point2D.Double(	Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+												      	Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
+								   						Integer.parseInt(moduleEle.getChildText("width")), 
+								   						Integer.parseInt(moduleEle.getChildText("height")));
 		
 		fam.addModule(module);
 		
@@ -124,10 +124,10 @@ public static void readXML(FunctionalArchitectureModel fam) {
 			//Parsing of Modules
 			Module module = new Module("3", 
 									   moduleEle.getChildText("name"),
-									   new Point2D.Double(Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
-													      Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
-									   Integer.parseInt(moduleEle.getChildText("width")), 
-									   Integer.parseInt(moduleEle.getChildText("height")));
+									   new Point2D.Double(	Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
+													      	Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])),
+														   	Integer.parseInt(moduleEle.getChildText("width")), 
+														   	Integer.parseInt(moduleEle.getChildText("height")));
 			
 			fam.addModule(module);
 			
@@ -135,10 +135,10 @@ public static void readXML(FunctionalArchitectureModel fam) {
 				//Parsing of Features
 				Feature feature = new Feature(	"5", 
 												featureEle.getChildText("name"), 
-												new Point2D.Double(Integer.parseInt(featureEle.getChildText("origin").split(",")[0]),
-						  									  	   Integer.parseInt(featureEle.getChildText("origin").split(",")[1])), 
-												Integer.parseInt(featureEle.getChildText("width")), 
-												Integer.parseInt(featureEle.getChildText("height")));
+												new Point2D.Double(	Integer.parseInt(featureEle.getChildText("origin").split(",")[0]),
+						  									  	   	Integer.parseInt(featureEle.getChildText("origin").split(",")[1])), 
+																	Integer.parseInt(featureEle.getChildText("width")), 
+																	Integer.parseInt(featureEle.getChildText("height")));
 				
 				module.addFeature(feature);				
 			}
