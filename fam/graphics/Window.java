@@ -1,13 +1,19 @@
 package org.architecturemining.fam.graphics;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,7 +41,9 @@ public class Window extends JFrame {
 	
 	FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
 	
-	int menuSpace = 220;
+	TraceTable traceTable;
+	
+	int menuSpace = 0;
 	
 	public static void main(){
 		
@@ -56,55 +64,100 @@ public class Window extends JFrame {
 			this.setTitle("FAM Sequence Creator");
 			
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+    traceList.add(new Trace());
+    //Panel stuff
+    mainPanel = new MyPanel();
+
 			
-			traceList.add(new Trace());
+			this.setLayout(new BorderLayout());
+			
 			//Panel stuff
-			mainPanel = new MyPanel();
+			JPanel menuPanel = new JPanel();
+			MyPanel famPanel = new MyPanel();
 			
-			mainPanel.setLayout(null);
+			addMenuPanelComponents(menuPanel);
+			addFamPanelComponents(fam, famPanel);
 			
-			addMenuPanelComponents(mainPanel);
-			addFamPanelComponents(fam, mainPanel);
-			
+
+			this.add(menuPanel, BorderLayout.WEST);
+			this.add(famPanel, BorderLayout.CENTER);
+
 			mainPanel.repaint();
-			this.add(mainPanel);
+
 			
 			this.setVisible(true);
+			this.setResizable(true);
 		}
 
 	private void addMenuPanelComponents(JPanel menuPanel) {
 		
-		recordLog = new JButton("Record new log");
-		stopLog = new JButton("Stop log");
-		exportLog = new JButton("Export");
+		menuPanel.setLayout(new GridBagLayout());	
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		
+		
 		recordingLabel = new JLabel("Recording");
-		exportLabel = new JLabel("Export");
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weighty = 1;
+		menuPanel.add(recordingLabel,c);
+		
+
+		recordLog = new JButton("Record new log");
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weighty = 5;
+		menuPanel.add(recordLog,c);
+		
+		stopLog = new JButton("Stop log");
+		c.gridx = 1;
+		c.gridy = 1;
+		c.weighty = 5;
+		menuPanel.add(stopLog,c);
+		
+		traceTable = new TraceTable();
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 2;
+		c.ipady = 200;
+		c.ipadx = 20;
+		c.insets = new Insets(10,10,10,5);
+		c.weighty = 5;
+		menuPanel.add(traceTable,c);
+
+		
+		/*
 		textArea = new JTextArea("");
-		
-		ListenForButton lForButton = new ListenForButton();
-		
-		recordLog.setBounds(15, 60, 140, 40);
-		recordLog.addActionListener(lForButton);
-		stopLog.setBounds(170,60, 100, 40);
-		exportLog.setBounds(15, 600, 100,40);
-		recordingLabel.setBounds(15, 40, 150 ,20);
-		exportLabel.setBounds(15, 580, 150, 20);
-		
-		textArea.setBounds(15, 200, 250, 300);
+		c.gridx = 0;
+		c.gridy = 2;
+		c.ipady = 400; 
+		c.gridwidth = c.REMAINDER;
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
+		menuPanel.add(textArea,c);
+		 */
 		
-		menuPanel.add(recordLog);
-		menuPanel.add(stopLog);
-		menuPanel.add(exportLog);
-		menuPanel.add(recordingLabel);
-		menuPanel.add(exportLabel);
-		menuPanel.add(textArea);
-
-						
+		exportLabel = new JLabel("Export");
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 1; //reset
+		c.weighty = 1;
+		c.ipady = 0; //reset
+		c.ipadx = 0;
+		
+		menuPanel.add(exportLabel,c);
+		
+		exportLog = new JButton("Export");
+		c.gridx = 0;
+		c.gridy = 4;
+		c.weighty = 5;
+		menuPanel.add(exportLog,c);		
 	}
 
-	public void addFamPanelComponents(FunctionalArchitectureModel fam, JPanel famPanel) {
+	public void addFamPanelComponents(FunctionalArchitectureModel fam, MyPanel famPanel) {
+		
+		famPanel.setLayout(null);
 		
 		featureButtons = new ArrayList<FButton>();
 		
@@ -133,6 +186,8 @@ public class Window extends JFrame {
 				counter++;
 			}
 		}
+		
+		famPanel.setBorder( BorderFactory.createLineBorder(Color.black));
 	}
 	
 	private class ListenForButton implements ActionListener{
@@ -149,6 +204,7 @@ public class Window extends JFrame {
 			for(int i = 0 ; featureButtons.size() > i ; i++) {
 				
 				if(e.getSource() == featureButtons.get(i)) {
+
 					traceList.get(counter).addFeature( featureButtons.get(i).getFeature());
 					textArea.append("-"+ featureButtons.get(i).getName());		
 				}
@@ -156,7 +212,7 @@ public class Window extends JFrame {
 			
 			MyPanel imagePanel = new MyPanel();
             repaint();
-			
+
 		}
 	}
 		
