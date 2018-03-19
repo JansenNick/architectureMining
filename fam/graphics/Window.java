@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
@@ -59,7 +58,7 @@ public class Window extends JFrame {
 			ConsoleDemo.main(fam);
 			
 			// Window stuff
-			this.setSize(1200, 800);
+			this.setSize(1400, 800);
 
 			this.setTitle("FAM Sequence Creator");
 			
@@ -105,6 +104,8 @@ public class Window extends JFrame {
 		
 
 		recordLog = new JButton("Record new log");
+		ListenForButton lForButton = new ListenForButton();
+		recordLog.addActionListener(lForButton);
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weighty = 5;
@@ -116,6 +117,7 @@ public class Window extends JFrame {
 		c.weighty = 5;
 		menuPanel.add(stopLog,c);
 		
+		/*
 		traceTable = new TraceTable();
 		c.gridx = 0;
 		c.gridy = 2;
@@ -125,9 +127,9 @@ public class Window extends JFrame {
 		c.insets = new Insets(10,10,10,5);
 		c.weighty = 5;
 		menuPanel.add(traceTable,c);
-
+		 */
 		
-		/*
+		
 		textArea = new JTextArea("");
 		c.gridx = 0;
 		c.gridy = 2;
@@ -136,7 +138,7 @@ public class Window extends JFrame {
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		menuPanel.add(textArea,c);
-		 */
+		 
 		
 		exportLabel = new JLabel("Export");
 		c.gridx = 0;
@@ -210,7 +212,6 @@ public class Window extends JFrame {
 				}
 			}
 			
-			MyPanel imagePanel = new MyPanel();
             repaint();
 
 		}
