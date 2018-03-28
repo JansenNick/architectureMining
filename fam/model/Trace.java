@@ -1,12 +1,10 @@
-package org.architecturemining.fam.graphics;
+package org.architecturemining.fam.model;
 
 import java.util.ArrayList;
 
-import org.architecturemining.fam.model.Feature;
-
 public class Trace {
 	
-	ArrayList<Feature> featureNameList = new ArrayList<Feature>();
+	public ArrayList<Feature> featureNameList = new ArrayList<Feature>();
 	String name = "";
 	
 	public ArrayList<Feature> getNameFeatureList() {

@@ -68,7 +68,7 @@ private static void writeXML() {
 
 	XMLOutputter xmlOutput = new XMLOutputter(Format.getPrettyFormat());
 	
-	xmlOutput.output(doc, new FileOutputStream(new File("./src/jdomMade.xml")));
+	xmlOutput.output(doc, new FileOutputStream(new File("./src/org.architecturemining.fam.IOfiles/jdomMade.xml")));
 	
 	System.out.println("XML created");
 	}

@@ -50,10 +50,9 @@ public class Main{
 	                return fam;
 	        }
 		}
-	 
-	 
+	  
 	 @Visualizer
-     public JComponent visualize(PluginContext context, FunctionalArchitectureModel fam) {
+    public JComponent visualize(PluginContext context, FunctionalArchitectureModel fam) {
 		 
 		 return new JLabel("FAM");
 		 

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import org.architecturemining.fam.graphics.Trace;
+import org.architecturemining.fam.model.Trace;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
@@ -44,7 +44,7 @@ public class TraceExportXML {
 	
 		XMLOutputter xmlOutput = new XMLOutputter(Format.getPrettyFormat());
 		
-		xmlOutput.output(doc, new FileOutputStream(new File("./src/traceExport.xml")));
+		xmlOutput.output(doc, new FileOutputStream(new File("./src/org.architecturemining.fam.IOfiles/traceExport.xml")));
 		
 		System.out.println("Traces exported");
 		}

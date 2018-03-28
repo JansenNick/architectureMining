@@ -33,6 +33,7 @@ public static FunctionalArchitectureModel readXML(InputStream input) throws JDOM
 	return buildFromSAX(doc);
 }
 
+@SuppressWarnings("unused")
 private static FunctionalArchitectureModel buildFromSAX(Document doc) throws FamException {
 	
 	FunctionalArchitectureModel fam = new FunctionalArchitectureModel();
@@ -99,6 +100,8 @@ private static FunctionalArchitectureModel buildFromSAX(Document doc) throws Fam
 	return fam;
 }
 
+
+@SuppressWarnings("serial")
 public class FamException extends Exception {
 
 }
@@ -110,7 +113,7 @@ public static void readXML(FunctionalArchitectureModel fam) {
 		Document readDoc = null;
 		 
 		try {
-			readDoc = builder.build(new File("./src/jdomMade.xml"));
+			readDoc = builder.build(new File("./src/org.architecturemining.fam.IOfiles/jdomMade.xml"));
 		} catch (JDOMException | IOException e) {
 
 			e.printStackTrace();

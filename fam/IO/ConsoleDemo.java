@@ -1,4 +1,6 @@
-package org.architecturemining.fam.model;
+package org.architecturemining.fam.IO;
+
+import org.architecturemining.fam.model.FunctionalArchitectureModel;
 
 public class ConsoleDemo {
 	
