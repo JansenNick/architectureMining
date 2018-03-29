@@ -160,10 +160,10 @@ public class Window extends JFrame {
 				graph2.setStroke(new BasicStroke(2f));
 				
 				//draw arrowhead
-				Triangle triangle = new Triangle(12,12);	
-				triangle.rotateByDegrees(angle -90);	
-				triangle.setLocation(middleX, middleY);
-				graph2.draw(triangle.getTransformedInstance());
+				Arrowhead arrowHead = new Arrowhead(12,12);	
+				arrowHead.rotateByDegrees(angle - 90);	
+				arrowHead.setLocation(middleX, middleY);
+				graph2.draw(arrowHead.getTransformedInstance());
 				
 				//draw trace
 				graph2.draw(new Line2D.Double(startX, startY, endX, endY));
