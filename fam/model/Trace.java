@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Trace {
 	
 	public ArrayList<Feature> featureNameList = new ArrayList<Feature>();
-	String name = "";
+	String id = "t0";
+	String name = "name";
+	String description = "description";
 	
 	public ArrayList<Feature> getNameFeatureList() {
 		return featureNameList;
@@ -25,6 +27,22 @@ public class Trace {
 	
 	public String getNameTrace() {
 		return this.name;
+	}
+	
+	public String getDescriptionTrace() {
+		return this.description;
+	}
+	
+	public void setDescriptionTrace(String description) {
+		this.description = description;
+	}
+
+	public void setIdTrace(String newId) {
+		id = newId;
+	}
+	
+	public String getIdTrace() {
+		return id;
 	}
 	
 }

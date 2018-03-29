@@ -25,20 +25,27 @@ public class TraceExportXML {
 		doc.setRootElement(theRoot);
 		
 		for(int i = 0; traceList.size() > i ; i++) {
-			Element trace = new Element(traceList.get(i).getNameTrace());
+			Element trace = new Element("trace");
+			trace.setAttribute("id", traceList.get(i).getIdTrace());
 			
-			String x = " ";
+			Element name = new Element("name");
+			name.addContent(traceList.get(i).getNameTrace());
+			
+			Element description = new Element("description");
+			description.addContent(traceList.get(i).getDescriptionTrace());
+			
+			trace.addContent(name);
+			trace.addContent(description);
 			
 			for(int j = 0; traceList.get(i).getNameFeatureList().size() > j ; j++) {
 				
-				if(j==0) {
-				x = x + traceList.get(i).getNameFeatureList().get(j).getName();	
-				}
-				else {
-				x = x + "-" + traceList.get(i).getNameFeatureList().get(j).getName();
-				}
+				Element feature = new Element("feature");
+				feature.setAttribute("order", ""+j);
+				feature.setAttribute("id",traceList.get(i).getNameFeatureList().get(j).getName());
+				trace.addContent(feature);
 			}
-			trace.addContent(x);
+			
+			
 			theRoot.addContent(trace);
 		}
 	

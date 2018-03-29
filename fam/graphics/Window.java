@@ -23,7 +23,6 @@ import org.architecturemining.fam.model.Trace;;
 
 @SuppressWarnings("serial")
 
-
 public class Window extends JFrame {
 	
 	FamPanel mainPanel;
@@ -50,7 +49,7 @@ public class Window extends JFrame {
 			ConsoleDemo.main(fam);
 			
 			//Window
-			this.setSize(1400, 800);
+			this.setSize(1100, 800);
 
 			this.setTitle("FAM Sequence Creator");
 			
@@ -63,7 +62,7 @@ public class Window extends JFrame {
 			JPanel menuPanel = new JPanel();
 			FamPanel famPanel = new FamPanel();
 			
-			menuPanelComponents.addMenuPanelComponents(menuPanel, currentTrace, this);
+			menuPanelComponents.addMenuPanelComponents(menuPanel, this);
 			famPanelComponents.addFamPanelComponents(fam, famPanel, this);
 			
 			traceList.get(currentTrace).setNameTrace("Trace" + currentTrace);
@@ -79,15 +78,21 @@ public class Window extends JFrame {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			if(e.getSource() == menuPanelComponents.getRecordLog()) {
+			if(e.getSource() == menuPanelComponents.getSaveTrace()) {
+				menuPanelComponents.getTextArea().append(	"Trace: " + menuPanelComponents.getNameField().getText() + "\n" + 
+															menuPanelComponents.getCurrentTraceTextArea().getText() + "\n\n"
+															);
+				
+				traceList.get(currentTrace).setIdTrace("t"+currentTrace);
+				traceList.get(currentTrace).setNameTrace(menuPanelComponents.getNameField().getText());
+				traceList.get(currentTrace).setDescriptionTrace(menuPanelComponents.getDescriptionTextArea().getText());
+				
+				menuPanelComponents.getNameField().setText("");
+				menuPanelComponents.getDescriptionTextArea().setText("");
+				menuPanelComponents.getCurrentTraceTextArea().setText("");
+				
 				currentTrace++;
 				traceList.add(new Trace());
-				traceList.get(currentTrace).setNameTrace("Trace" + currentTrace);
-				menuPanelComponents.getTextArea().append("\nNew trace created \n" + "Trace "+currentTrace+": ");
-			}
-			
-			if(e.getSource() == menuPanelComponents.getStopLog()) {
-				menuPanelComponents.getTextArea().append("\n Trace ended");
 			}
 			
 			if(e.getSource() == menuPanelComponents.getExportLog()) {
@@ -98,9 +103,8 @@ public class Window extends JFrame {
 			for(int i = 0 ; famPanelComponents.getFeatureButtonList().size() > i ; i++) {
 				if(e.getSource() == famPanelComponents.getFeatureButtonList().get(i)) {
 					traceList.get(currentTrace).addFeature( famPanelComponents.getFeatureButtonList().get(i).getFeature());
-
-					menuPanelComponents.getTextArea().append("-"+ famPanelComponents.getFeatureButtonList().get(i).getName());
-
+					menuPanelComponents.getCurrentTraceTextArea().append("-"+ famPanelComponents.getFeatureButtonList().get(i).getName());
+					
 				}
 			}
             repaint();

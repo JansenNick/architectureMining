@@ -7,59 +7,104 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import org.architecturemining.fam.graphics.Window.ListenForButton;
 
 public class MenuPanelComponents {
 	
-	JButton recordLog, stopLog, exportLog;
-	JLabel recordingLabel, exportLabel;
-	JTextArea textArea;
+	JButton saveTrace, exportLog;
+	JLabel recordingLabel, exportLabel, nameLabel, descriptionLabel, currentTraceLabel;
+	JTextArea textArea, descriptionArea, currentTraceArea;
+	JTextField nameField;
 	
-	public void addMenuPanelComponents(JPanel menuPanel, int currentTrace, Window window) {
+	public void addMenuPanelComponents(JPanel menuPanel, Window window) {
 			
 			menuPanel.setLayout(new GridBagLayout());	
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
+			ListenForButton lForButton = window.new ListenForButton();
+			c.ipadx =15;
 			
-			recordingLabel = new JLabel("Recording");
+			
+			nameLabel = new JLabel("Name trace:");
 			c.gridx = 0;
-			c.gridy = 0;
+			c.gridy = 1;
+			c.weighty = 1;
+			menuPanel.add(nameLabel,c);
+
+			nameField = new JTextField();
+			c.gridx = 0;
+			c.gridy = 2;
+			c.weighty = 1;
+			c.gridwidth = c.REMAINDER;
+			menuPanel.add(nameField,c);
+			
+			descriptionLabel = new JLabel("Description trace:");
+			c.gridx = 0;
+			c.gridy = 3;
+			c.weighty = 1;
+			menuPanel.add(descriptionLabel,c);
+			
+			descriptionArea = new JTextArea();
+			descriptionArea.setLineWrap(true);
+			descriptionArea.setWrapStyleWord(true);
+			c.gridx = 0;
+			c.gridy = 4;
+			c.ipady = 100;
+			c.weighty = 1;
+			JScrollPane scrollpaneDescription= new JScrollPane(descriptionArea);
+			menuPanel.add(scrollpaneDescription,c);
+			c.gridwidth = 1; //reset
+			c.ipady = 0; //reset
+			
+			currentTraceLabel = new JLabel("Current trace:");
+			c.gridx = 0;
+			c.gridy = 5;
+			c.weighty = 1;
+			menuPanel.add(currentTraceLabel,c);
+			
+			currentTraceArea = new JTextArea();
+			currentTraceArea.setLineWrap(true);
+			currentTraceArea.setWrapStyleWord(true);
+			c.gridx = 0;
+			c.gridy = 6;
+			c.ipady = 75; 
+			c.weighty = 1;
+			JScrollPane scrollpaneCurrentTrace= new JScrollPane(currentTraceArea);
+			menuPanel.add(scrollpaneCurrentTrace,c);
+			c.gridwidth = 1; //reset
+			c.ipady = 0; //reset
+			
+			saveTrace = new JButton("Save trace");
+			saveTrace.addActionListener(lForButton);
+			c.gridx = 0;
+			c.gridy = 7;
+			c.weighty = 5;
+			menuPanel.add(saveTrace,c);
+			
+			recordingLabel = new JLabel("Logbook");
+			c.gridx = 0;
+			c.gridy = 8;
 			c.weighty = 1;
 			menuPanel.add(recordingLabel,c);
 	
-			recordLog = new JButton("Record new log");
-			ListenForButton lForButton = window.new ListenForButton();
-			recordLog.addActionListener(lForButton);
-			c.gridx = 0;
-			c.gridy = 1;
-			c.weighty = 5;
-			menuPanel.add(recordLog,c);
-			
-			stopLog = new JButton("Stop log");
-			stopLog.addActionListener(lForButton);
-			c.gridx = 1;
-			c.gridy = 1;
-			c.weighty = 5;
-			menuPanel.add(stopLog,c);
-	
 			textArea = new JTextArea("");
-			c.gridx = 0;
-			c.gridy = 2;
-			c.ipady = 400; 
-			c.gridwidth = c.REMAINDER;
 			textArea.setLineWrap(true);
 			textArea.setWrapStyleWord(true);
-			textArea.append("New trace created \n" + "Trace "+currentTrace+": ");
+			c.gridx = 0;
+			c.gridy = 9;
+			c.ipady = 250; 
+			c.gridwidth = c.REMAINDER;
 			JScrollPane scrollpane= new JScrollPane(textArea);
 			menuPanel.add(scrollpane,c);
-	
+			c.gridwidth = 1; //reset
+			c.ipady = 0; //reset
+			
 			exportLabel = new JLabel("Export");
 			c.gridx = 0;
-			c.gridy = 3;
-			c.gridwidth = 1; //reset
+			c.gridy = 10;
 			c.weighty = 1;
-			c.ipady = 0; //reset
 			c.ipadx = 0;
 			
 			menuPanel.add(exportLabel,c);
@@ -67,18 +112,13 @@ public class MenuPanelComponents {
 			exportLog = new JButton("Export");
 			exportLog.addActionListener(lForButton);
 			c.gridx = 0;
-			c.gridy = 4;
+			c.gridy = 11;
 			c.weighty = 5;
 			menuPanel.add(exportLog,c);		
 		}
-
-
-	public JButton getRecordLog() {
-		return recordLog;
-	}
 	
-	public JButton getStopLog() {
-		return stopLog;
+	public JButton getSaveTrace() {
+		return saveTrace;
 	}
 	
 	public JButton getExportLog() {
@@ -87,6 +127,18 @@ public class MenuPanelComponents {
 	
 	public JTextArea getTextArea() {
 		return textArea;
+	}
+	
+	public JTextArea getCurrentTraceTextArea() {
+		return currentTraceArea;
+	}
+	
+	public JTextField getNameField() {
+		return nameField;
+	}
+	
+	public JTextArea getDescriptionTextArea() {
+		return descriptionArea;
 	}
 
 }
