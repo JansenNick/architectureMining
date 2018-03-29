@@ -24,21 +24,21 @@ public class MenuPanelComponents {
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			ListenForButton lForButton = window.new ListenForButton();
-			c.ipadx =15;
-			
-			
+						
 			nameLabel = new JLabel("Name trace:");
 			c.gridx = 0;
 			c.gridy = 1;
 			c.weighty = 1;
 			menuPanel.add(nameLabel,c);
-
+			
 			nameField = new JTextField();
 			c.gridx = 0;
 			c.gridy = 2;
 			c.weighty = 1;
+			c.ipadx =185;
 			c.gridwidth = c.REMAINDER;
 			menuPanel.add(nameField,c);
+			c.ipadx = 0;//reset
 			
 			descriptionLabel = new JLabel("Description trace:");
 			c.gridx = 0;
@@ -67,6 +67,7 @@ public class MenuPanelComponents {
 			currentTraceArea = new JTextArea();
 			currentTraceArea.setLineWrap(true);
 			currentTraceArea.setWrapStyleWord(true);
+			currentTraceArea.setEditable(false);
 			c.gridx = 0;
 			c.gridy = 6;
 			c.ipady = 75; 
@@ -92,6 +93,7 @@ public class MenuPanelComponents {
 			textArea = new JTextArea("");
 			textArea.setLineWrap(true);
 			textArea.setWrapStyleWord(true);
+			textArea.setEditable(false);
 			c.gridx = 0;
 			c.gridy = 9;
 			c.ipady = 250; 

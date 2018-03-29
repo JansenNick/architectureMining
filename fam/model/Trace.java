@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Trace {
 	
 	public ArrayList<Feature> featureNameList = new ArrayList<Feature>();
-	String id = "t0";
-	String name = "name";
-	String description = "description";
+	String id = "empty id";
+	String name = "empty name";
+	String description = "empty description";
 	
 	public ArrayList<Feature> getNameFeatureList() {
 		return featureNameList;

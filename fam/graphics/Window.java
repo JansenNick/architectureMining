@@ -151,17 +151,23 @@ public class Window extends JFrame {
 				Double endX = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getWidth()/2);
 				Double endY = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getHeight()/2);
 				
-				Double middleX = startX + ((endX-startX)/2);
-				Double middleY = startY + ((endY-startY)/2);						
+				int middleX = (int) (startX + ((endX-startX)/2));
+				int middleY = (int) (startY + ((endY-startY)/2));						
 				
-				//Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
-				//System.out.println(angle);
+				Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
 				
-				//draw trace
 				graph2.setColor(Color.RED);
 				graph2.setStroke(new BasicStroke(2f));
+				
+				//draw arrowhead
+				Triangle triangle = new Triangle(12,12);	
+				triangle.rotateByDegrees(angle -90);	
+				triangle.setLocation(middleX, middleY);
+				graph2.draw(triangle.getTransformedInstance());
+				
+				//draw trace
 				graph2.draw(new Line2D.Double(startX, startY, endX, endY));
-				graph2.draw(new Line2D.Double(middleX,middleY,middleX-5,middleY-5));
+				
 				graph2.setStroke(new BasicStroke(1f));
 				graph2.setColor(Color.BLACK);
 			}
@@ -169,7 +175,3 @@ public class Window extends JFrame {
 	}
 
 }
-
-
-
-
