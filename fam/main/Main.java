@@ -15,6 +15,11 @@ import org.processmining.framework.abstractplugins.AbstractImportPlugin;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.framework.plugin.annotations.Plugin;
 
+/**Main class where everything starts from. The blocks with an @ sign are needed for the ProM integration,
+ * this currently not yet working. The main method creates a window from which everything else starts.
+ * 
+ * @author Nick
+ */
 public class Main{
 	
 	@Plugin(
@@ -44,14 +49,13 @@ public class Main{
 	public class FAMImporter extends AbstractImportPlugin {   
 
 	    @Override
-        protected Object importFromStream(PluginContext context, InputStream input, String filename, long fileSizeInBytes)  throws Exception {
-	                FunctionalArchitectureModel fam = ReadXML.readXML(input);
+        protected Object importFromStream(PluginContext context, InputStream input, String filename, long fileSizeInBytes)  throws Exception { FunctionalArchitectureModel fam = ReadXML.readXML(input);
 	                context.getFutureResult(0).setLabel("FAM");
 	                return fam;
 	        }
 		}
 	  
-	 @Visualizer
+	@Visualizer
     public JComponent visualize(PluginContext context, FunctionalArchitectureModel fam) {
 		 
 		 return new JLabel("FAM");

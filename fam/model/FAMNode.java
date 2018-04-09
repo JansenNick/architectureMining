@@ -1,14 +1,13 @@
 package org.architecturemining.fam.model;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-import javax.swing.JComponent;
-
-@SuppressWarnings("serial")
-public abstract class FAMNode extends JComponent {
+/**Because Module and Feature both need the same kind of information and behavior the FAMnode
+ * generalization has been introduced. 
+ * 
+ * @author Nick
+ */
+public abstract class FAMNode {
 	
 	private String name;
 	private String id;
@@ -16,7 +15,13 @@ public abstract class FAMNode extends JComponent {
 	private int width;
 	private int height;	
 	
-	//Node overloading 
+	/**Constructors for a FAMnode
+	 * @param id		id of the node
+	 * @param name		name of the node
+	 * @param origin	origin are the (x,y) coordinates of the node on th screen stored in an Point2D
+	 * @param width		width determines how wide the node should appear on the screen
+	 * @param height	height determines how high the node should appear on the screen
+	 */
 	public FAMNode()
 	{
 	}
@@ -34,6 +39,7 @@ public abstract class FAMNode extends JComponent {
 		this.height = height;	
 	}
 	
+
 	public FAMNode(String id, String name, Point2D origin, int width, int height)
 	{
 		this.id = id;
@@ -86,16 +92,6 @@ public abstract class FAMNode extends JComponent {
 	
 	public void setHeight(int height) {
 		this.height = height;
-	}
-	
-	public void paint(Graphics g){		
-		
-		Graphics2D graph2 = (Graphics2D)g;
-			
-			graph2.draw(new Ellipse2D.Float(	(float)this.getOrigin().getX(),
-												(float)this.getOrigin().getY(), 
-												this.getWidth(), 
-												this.getHeight()	));	
 	}
 	
 }

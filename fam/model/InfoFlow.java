@@ -1,5 +1,10 @@
 package org.architecturemining.fam.model;
 
+/**A InfoFlow represents the existing infoFlows within an FAMdiagram. Each infoFlow stores
+ * a source and target feature which it connects.
+ * 
+ * @author Nick
+ */
 public class InfoFlow implements Visitable {
 	private Feature source;
 	private Feature target;
@@ -7,8 +12,9 @@ public class InfoFlow implements Visitable {
 	
 	/**
 	 * Constructor for an Information Flow in an FAM diagram
-	 * @param source is the starting point of an information flow
-	 * @param target is the ending point of an information flow
+	 * @param source 	is the starting point of an information flow
+	 * @param target 	is the ending point of an information flow
+	 * @param name 		is the name of the infoFlow
 	 */
 	public InfoFlow(String name) {
 		this.name = name;

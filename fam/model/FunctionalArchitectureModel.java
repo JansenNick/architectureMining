@@ -2,30 +2,31 @@ package org.architecturemining.fam.model;
 
 import java.util.ArrayList;
 
+/**Master class for the data model, the FunctionalArchitectureModel a array of modules and a list of infoFlows.
+ * Together they represent the functional architecture model. Each module can contain features, those are stored
+ * in a array in each module. 
+ * 
+ * @author Nick
+ */
 public class FunctionalArchitectureModel {
 	
 	private ArrayList<Module> listModules = new ArrayList<Module>();
 	private ArrayList<InfoFlow> listInfoFlow = new ArrayList<InfoFlow>();
 	
-	private int sourceModule;
-	private int sourceFeature;
-	private  int targetModule;
-	private int targetFeature;
-	
-	
 	public static void main (String[] args) {
 	
 	}
 	
-	public void addModule(Module m)
-	{
+	//Adding of modules to the corresponding arrays
+	public void addModule(Module m){
 		getListModules().add(m);
 	}
 	
 	public void addInfoFlow(InfoFlow i) {
 		getListInfoFlow().add(i);
 	}
-
+	
+	//Getters and setters
 	public ArrayList<Module> getListModules() {
 		return listModules;
 	}
@@ -40,38 +41,6 @@ public class FunctionalArchitectureModel {
 	
 	public void setListInfoFlow(ArrayList<InfoFlow> listInfoFlow) {
 		this.listInfoFlow = listInfoFlow;
-	}
-
-	public int getSourceModule() {
-		return sourceModule;
-	}
-
-	public void setSourceModule(int sourceModule) {
-		this.sourceModule = sourceModule;
-	}
-
-	public int getSourceFeature() {
-		return sourceFeature;
-	}
-
-	public void setSourceFeature(int sourceFeature) {
-		this.sourceFeature = sourceFeature;
-	}
-
-	public int getTargetModule() {
-		return targetModule;
-	}
-
-	public void setTargetModule(int targetModule) {
-		this.targetModule = targetModule;
-	}
-
-	public int getTargetFeature() {
-		return targetFeature;
-	}
-
-	public void setTargetFeature(int targetFeature) {
-		this.targetFeature = targetFeature;
 	}
 	
 }
