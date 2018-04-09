@@ -10,12 +10,20 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+/**Handles the exporting of the created traces to a new .xml document.
+ * 
+ * @author Nick
+ */
 public class TraceExportXML {
 	
 	public static void main() {
 		
 		}
 	
+	/** Writes an XML document based on the given traceList.
+	 * 
+	 * @param traceList		array with all the created traces by the user
+	 */
 	@SuppressWarnings("unused")
 	public static void writeXML(ArrayList<Trace> traceList) {
 		try {
@@ -44,7 +52,6 @@ public class TraceExportXML {
 				feature.setAttribute("id",traceList.get(i).getNameFeatureList().get(j).getName());
 				trace.addContent(feature);
 			}
-			
 			
 			theRoot.addContent(trace);
 		}

@@ -8,19 +8,20 @@ import java.awt.geom.Point2D;
  */
 public class Feature extends FAMNode implements Visitable {
 	
+
+	public Feature(Point2D.Double point, int width, int height) {
+		super(point, width, height);
+		};
+
 	/**Constructor methods for a Feature in an FAM diagram.
 	 * @param id		id of the feature
 	 * @param name		name of the feature
 	 * @param point		point are the (x,y) coordinates of the origin of the feature on the screen stored in an Point2D
 	 * @param width		width determines how wide the feature should appear on the screen
 	 * @param height	height determines how high the feature should appear on the screen
-	 */
-	public Feature(Point2D.Double point, int width, int height) {
-		super(point, width, height);
-		};
-		
+	 */		
 	public Feature(String id, String name,Point2D.Double point, int width, int height) {
-		super(id, name, point, width , height);
+		super(id, name, point, width, height);
 		};		
 		
 	public String accept(Visitor visitor) {

@@ -4,6 +4,9 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
+/** Handles all the logic to draw an nice arrowhead in the middle of an line.
+ * @author Nick
+ */
 @SuppressWarnings("serial")
 public class Arrowhead extends Path2D.Double {
 

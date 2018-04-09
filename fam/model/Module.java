@@ -13,6 +13,11 @@ public class Module extends FAMNode implements Visitable {
 
 	private ArrayList<Feature> listFeatures = new ArrayList<Feature>();			
 	
+
+	public Module(Point2D.Double point, int width, int height)
+	{ 
+		super(point, width , height);
+	}
 	/**Constructors of a Module in a FAM diagram.
 	 * @param id		id of the module
 	 * @param name		name of the module
@@ -20,14 +25,9 @@ public class Module extends FAMNode implements Visitable {
 	 * @param width		width determines how wide the module should appear on the screen
 	 * @param height	height determines how high the module should appear on the screen
 	 */
-	public Module(Point2D.Double point, int width, int height)
-	{ 
-		super(point, width , height);
-	}
-
 	public Module(String id, String name, Point2D.Double point, int width, int height)
 	{ 
-		super(id, name, point, width , height);
+		super(id, name, point, width, height);
 	}
 	
 	//adds features to the listFeatures

@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 
 import org.architecturemining.fam.graphics.Window.ListenForButton;
 
+/**Handles all logic regarding the components in the menu panel. Holds all the required components for the menu panel.
+ * 
+ * @author Nick
+ */
 public class MenuPanelComponents {
 	
 	JButton saveTrace, exportLog;
@@ -18,6 +22,10 @@ public class MenuPanelComponents {
 	JTextArea textArea, descriptionArea, currentTraceArea;
 	JTextField nameField;
 	
+	/**Adds all the components to the menuPanel at the right place and size.
+	 * @param menuPanel		panel to which the components should be added
+	 * @param window		top level JFrame(Window) to which the components are added, required of the action listeners.
+	 */
 	public void addMenuPanelComponents(JPanel menuPanel, Window window) {
 			
 			menuPanel.setLayout(new GridBagLayout());	

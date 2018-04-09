@@ -15,13 +15,6 @@ public abstract class FAMNode {
 	private int width;
 	private int height;	
 	
-	/**Constructors for a FAMnode
-	 * @param id		id of the node
-	 * @param name		name of the node
-	 * @param origin	origin are the (x,y) coordinates of the node on th screen stored in an Point2D
-	 * @param width		width determines how wide the node should appear on the screen
-	 * @param height	height determines how high the node should appear on the screen
-	 */
 	public FAMNode()
 	{
 	}
@@ -39,7 +32,13 @@ public abstract class FAMNode {
 		this.height = height;	
 	}
 	
-
+	/**Constructors for a FAMnode
+	 * @param id		id of the node
+	 * @param name		name of the node
+	 * @param origin	origin are the (x,y) coordinates of the node on th screen stored in an Point2D
+	 * @param width		width determines how wide the node should appear on the screen
+	 * @param height	height determines how high the node should appear on the screen
+	 */
 	public FAMNode(String id, String name, Point2D origin, int width, int height)
 	{
 		this.id = id;

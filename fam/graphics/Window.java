@@ -21,11 +21,23 @@ import org.architecturemining.fam.IO.WriteXML;
 import org.architecturemining.fam.model.FunctionalArchitectureModel;
 import org.architecturemining.fam.model.Trace;;
 
+/** The Window class represents the JFrame in which everything happens. It is layed out according to the Border layout manager
+ *  and consists of two panels. The left panel is the menuPanel and is an regular JPanel, the right panel which shows the FAM diagram
+ *  is of the custom FAMPanel class which is an extension of a JPanel. The FAMPanel class is a private class of the Window class and is
+ *  defined at the bottom of this file.
+ * 
+ * A Window consists of the variables below:
+ * @param traceList				holds a list of all the created traces of the user
+ * @param fam					the data model of the functional architecture model
+ * @param menuPanelComponents	a custom object which stores all the menu panel components
+ * @param famPanelComponents	a custom object which stores all the fam panel components
+ * @param currentTrace			a simple counter to keep track which trace is currently active
+ * 
+ * @author Nick
+ */
 @SuppressWarnings("serial")
 
 public class Window extends JFrame {
-	
-	FamPanel mainPanel;
 
 	ArrayList<Trace> traceList = new ArrayList<Trace>();
 	
@@ -42,6 +54,10 @@ public class Window extends JFrame {
 
 	}
 	
+	/**Constructor of the Window class, sets the layout manager, creates the panels, adds components to the panels and
+	 * adds the panels to the JFrame at the right place. Also initiates the first Trace so the user can start building traces
+	 * right away.
+	 */
 	public Window(){
 		
 			WriteXML.main();
@@ -74,10 +90,15 @@ public class Window extends JFrame {
 			this.setResizable(true);
 		}
 
+	/**Implementation of an action listener to respond to all user activity. 
+	 * 
+	 * @author Nick
+	 */
 	public class ListenForButton implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
 			
+			//happens if "Save trace" button is pushed
 			if(e.getSource() == menuPanelComponents.getSaveTrace()) {
 				menuPanelComponents.getTextArea().append(	"Trace: " + menuPanelComponents.getNameField().getText() + "\n" + 
 															menuPanelComponents.getCurrentTraceTextArea().getText() + "\n\n"
@@ -99,12 +120,12 @@ public class Window extends JFrame {
 				TraceExportXML.writeXML(traceList);
 			}
 			
-			//adds pressed feature buttons to the tracelist
 			for(int i = 0 ; famPanelComponents.getFeatureButtonList().size() > i ; i++) {
 				if(e.getSource() == famPanelComponents.getFeatureButtonList().get(i)) {
+					//adds pressed feature buttons to the tracelist
 					traceList.get(currentTrace).addFeature( famPanelComponents.getFeatureButtonList().get(i).getFeature());
+					//updates current trace text area
 					menuPanelComponents.getCurrentTraceTextArea().append("-"+ famPanelComponents.getFeatureButtonList().get(i).getName());
-					
 				}
 			}
             repaint();
@@ -112,6 +133,10 @@ public class Window extends JFrame {
 
 	}
 		
+	/**Draws all the elements required in the FamPanel(except for there arrowhead, those a defined in an seperate class).
+	 * @author Nick
+	 *
+	 */
 	class FamPanel extends JPanel {
 		  
 		public void paintComponent(Graphics g) {

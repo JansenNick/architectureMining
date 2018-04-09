@@ -2,6 +2,10 @@ package org.architecturemining.fam.IO;
 
 import org.architecturemining.fam.model.FunctionalArchitectureModel;
 
+/**Prints the content of the FAM to the console for debugging purposes.
+ * 
+ * @author Nick
+ */
 public class ConsoleDemo {
 	
 	public static void main(FunctionalArchitectureModel fam) {

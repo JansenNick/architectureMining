@@ -2,7 +2,7 @@ package org.architecturemining.fam.model;
 
 import java.util.ArrayList;
 
-/**Master class for the data model, the FunctionalArchitectureModel a array of modules and a list of infoFlows.
+/**Master class for the data model, the FunctionalArchitectureModel holds an array of modules and a list of infoFlows.
  * Together they represent the functional architecture model. Each module can contain features, those are stored
  * in a array in each module. 
  * 

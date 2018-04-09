@@ -10,12 +10,6 @@ public class InfoFlow implements Visitable {
 	private Feature target;
 	private String name;
 	
-	/**
-	 * Constructor for an Information Flow in an FAM diagram
-	 * @param source 	is the starting point of an information flow
-	 * @param target 	is the ending point of an information flow
-	 * @param name 		is the name of the infoFlow
-	 */
 	public InfoFlow(String name) {
 		this.name = name;
 	}
@@ -24,7 +18,12 @@ public class InfoFlow implements Visitable {
 		this.source = source;
 		this.target = target;
 	}
-	
+	/**
+	 * Constructor for an Information Flow in an FAM diagram
+	 * @param source 	is the starting point of an information flow
+	 * @param target 	is the ending point of an information flow
+	 * @param name 		is the name of the infoFlow
+	 */	
 	public InfoFlow(Feature source, Feature target, String name) {
 		this.source = source;
 		this.target = target;

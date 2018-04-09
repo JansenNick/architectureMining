@@ -9,6 +9,12 @@ import org.jdom2.Text;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+/**functionality for building an FAM in .xml format using the JDOM2 library. Right now all parameters is hard coded to build an FAM, in the future
+ * this can be build responsive. For the current project this was not yet needed, a hand build xml also would have sufficed. But I
+ * enjoyed playing around with the jdom2 functionality.
+ * 
+ * @author Nick
+ */
 public class WriteXML {
 	
 public static void main() {
@@ -20,14 +26,12 @@ public static void main() {
 private static void writeXML() {
 	try {
 	Document doc = new Document();
+	
 	//create root
 	Element theRoot = new Element("FAM");
 	doc.setRootElement(theRoot);
 	
-	//Mogelijk modules/features/lines niet eerst in Elements op te slaan door parent mee te geven aan de functie
-	//Gaat alleen mis bij het creeren van een feature omdat je dan de naam van een child van theRoot moet hebben
-	//Echter geef ik dergelijke childs nergens een naam
-	//creation of modules, type, name, origin, height, width
+	//creation of modules
 	Element moduleA = createFAMnode("module", "A", "130,45", "124", "183");
 	Element moduleB = createFAMnode("module", "B", "491,45", "208", "365");
 	Element moduleC = createFAMnode("module", "C", "104,407", "213", "311");

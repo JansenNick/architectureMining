@@ -15,7 +15,7 @@ import org.processmining.framework.abstractplugins.AbstractImportPlugin;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.framework.plugin.annotations.Plugin;
 
-/**Main class where everything starts from. The blocks with an @ sign are needed for the ProM integration,
+/**Main class where everything starts from. The blocks with an "@" are needed for the ProM integration,
  * this currently not yet working. The main method creates a window from which everything else starts.
  * 
  * @author Nick
