@@ -7,10 +7,10 @@ import java.util.ArrayList;
  * in the current trace text box. Saved Traces are represented in the logbook.
  * 
  * A Trace consists of an id, a name, a description and a list of features.
- * @param id				id of the Trace
- * @param name				name of the Trace
- * @param description		description of the Trace
- * @param featureNameList	ordered list of all the features in the trace
+ * id				id of the Trace
+ * name				name of the Trace
+ * description		description of the Trace
+ * featureNameList	ordered list of all the features in the trace
  * 
  * @author Nick
  */

@@ -27,11 +27,11 @@ import org.architecturemining.fam.model.Trace;;
  *  defined at the bottom of this file.
  * 
  * A Window consists of the variables below:
- * @param traceList				holds a list of all the created traces of the user
- * @param fam					the data model of the functional architecture model
- * @param menuPanelComponents	a custom object which stores all the menu panel components
- * @param famPanelComponents	a custom object which stores all the fam panel components
- * @param currentTrace			a simple counter to keep track which trace is currently active
+ * traceList			holds a list of all the created traces of the user
+ * fam					the data model of the functional architecture model
+ * menuPanelComponents	a custom object which stores all the menu panel components
+ * famPanelComponents	a custom object which stores all the fam panel components
+ * currentTrace			a simple counter to keep track which trace is currently active
  * 
  * @author Nick
  */
@@ -98,7 +98,7 @@ public class Window extends JFrame {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			//happens if "Save trace" button is pushed
+			//happens if the "Save trace" button is pushed
 			if(e.getSource() == menuPanelComponents.getSaveTrace()) {
 				menuPanelComponents.getTextArea().append(	"Trace: " + menuPanelComponents.getNameField().getText() + "\n" + 
 															menuPanelComponents.getCurrentTraceTextArea().getText() + "\n\n"
@@ -115,12 +115,13 @@ public class Window extends JFrame {
 				currentTrace++;
 				traceList.add(new Trace());
 			}
-			
+			//happens if the "Export" button is pushed
 			if(e.getSource() == menuPanelComponents.getExportLog()) {
 				TraceExportXML.writeXML(traceList);
 			}
 			
 			for(int i = 0 ; famPanelComponents.getFeatureButtonList().size() > i ; i++) {
+				//happens if one of the feature buttons is pushed
 				if(e.getSource() == famPanelComponents.getFeatureButtonList().get(i)) {
 					//adds pressed feature buttons to the tracelist
 					traceList.get(currentTrace).addFeature( famPanelComponents.getFeatureButtonList().get(i).getFeature());
@@ -130,7 +131,6 @@ public class Window extends JFrame {
 			}
             repaint();
 		}
-
 	}
 		
 	/**Draws all the elements required in the FamPanel(except for there arrowhead, those a defined in an seperate class).
@@ -155,7 +155,6 @@ public class Window extends JFrame {
 				            		(int)	fam.getListModules().get(i).getOrigin().getX() + 7, 
 				            		(int)	fam.getListModules().get(i).getOrigin().getY() + 15);
 			}
-			
 			//draw info flows
 			for(int i = 0 ; i < fam.getListInfoFlow().size(); i++) {
 				
@@ -176,15 +175,16 @@ public class Window extends JFrame {
 				Double endX = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getWidth()/2);
 				Double endY = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getHeight()/2);
 				
+				//set color and stroke
+				graph2.setColor(Color.RED);
+				graph2.setStroke(new BasicStroke(2f));
+				
+				//draw arrowhead
 				int middleX = (int) (startX + ((endX-startX)/2));
 				int middleY = (int) (startY + ((endY-startY)/2));						
 				
 				Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
 				
-				graph2.setColor(Color.RED);
-				graph2.setStroke(new BasicStroke(2f));
-				
-				//draw arrowhead
 				Arrowhead arrowHead = new Arrowhead(12,12);	
 				arrowHead.rotateByDegrees(angle - 90);	
 				arrowHead.setLocation(middleX, middleY);
@@ -193,6 +193,7 @@ public class Window extends JFrame {
 				//draw trace
 				graph2.draw(new Line2D.Double(startX, startY, endX, endY));
 				
+				//reset color and stroke
 				graph2.setStroke(new BasicStroke(1f));
 				graph2.setColor(Color.BLACK);
 			}

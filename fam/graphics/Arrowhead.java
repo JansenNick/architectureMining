@@ -4,7 +4,9 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
-/** Handles all the logic to draw an nice arrowhead in the middle of an line.
+/**Handles all the logic to draw arrowheads and transform them correctly so they appear
+ * at the right place and angle on screen.
+ * 
  * @author Nick
  */
 @SuppressWarnings("serial")

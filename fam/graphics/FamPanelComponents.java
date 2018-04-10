@@ -37,8 +37,9 @@ public class FamPanelComponents {
 			
 			ListenForButton lForButton = window.new ListenForButton();
 			
+			//loop through modules
 			for(int i = 0 ; i < fam.getListModules().size(); i++) {
-				
+				//loop through features
 				for(int j = 0; j < fam.getListModules().get(i).getFeatureList().size(); j++) {
 		
 					featureButtonList.add(new FButton());
