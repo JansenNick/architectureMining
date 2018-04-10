@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 
  * @author Nick
  */
-public class Module extends FAMNode implements Visitable {
+public class Module extends FAMNode {
 
 	private ArrayList<Feature> listFeatures = new ArrayList<Feature>();			
 	
@@ -34,10 +34,6 @@ public class Module extends FAMNode implements Visitable {
 	public void addFeature(Feature feature)
 	{
 		listFeatures.add(feature);
-	}
-
-	public String accept(Visitor visitor) {
-		return visitor.visit(this);
 	}
 	
 	public ArrayList<Feature> getFeatureList() {

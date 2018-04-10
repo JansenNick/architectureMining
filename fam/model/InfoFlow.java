@@ -5,7 +5,7 @@ package org.architecturemining.fam.model;
  * 
  * @author Nick
  */
-public class InfoFlow implements Visitable {
+public class InfoFlow  {
 	private Feature source;
 	private Feature target;
 	private String name;
@@ -28,10 +28,6 @@ public class InfoFlow implements Visitable {
 		this.source = source;
 		this.target = target;
 		this.name = name;
-	}
-	
-	public String accept(Visitor visitor) {
-		return visitor.visit(this);
 	}
 	
 	public Feature getSource() {

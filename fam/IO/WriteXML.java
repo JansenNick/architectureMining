@@ -50,6 +50,8 @@ private static void writeXML() {
 	
 	//creation of lines
 	Element line1 = createLine("infoFlow","infoFlow1", "R", "P");
+	Element line2 = createLine("infoFlow","infoFlow2", "X","T");
+	Element line3 = createLine("infoFlow","infoFlow3", "W","Q");
 	
 	//adding features to modules
 	moduleA.addContent(featureQ);
@@ -62,13 +64,16 @@ private static void writeXML() {
 	moduleD.addContent(featureS);
 	moduleD.addContent(featureV);
 	
-	//adding modules and lines to root
+	//adding modules to root
 	theRoot.addContent(moduleA);
 	theRoot.addContent(moduleB);
 	theRoot.addContent(moduleC);
 	theRoot.addContent(moduleD);
 	
+	//adding infoFlows to root
 	theRoot.addContent(line1);
+	theRoot.addContent(line2);
+	theRoot.addContent(line3);
 
 	XMLOutputter xmlOutput = new XMLOutputter(Format.getPrettyFormat());
 	

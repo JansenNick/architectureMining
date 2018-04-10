@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
  * 
  * @author Nick
  */
-public class Feature extends FAMNode implements Visitable {
+public class Feature extends FAMNode  {
 	
 
 	public Feature(Point2D.Double point, int width, int height) {
@@ -24,7 +24,4 @@ public class Feature extends FAMNode implements Visitable {
 		super(id, name, point, width, height);
 		};		
 		
-	public String accept(Visitor visitor) {
-			return visitor.visit(this);
-	}
 }

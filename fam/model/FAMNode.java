@@ -3,7 +3,8 @@ package org.architecturemining.fam.model;
 import java.awt.geom.Point2D;
 
 /**Because Module and Feature both need the same kind of information and behavior the FAMnode
- * generalization has been introduced. 
+ * generalization has been introduced. This class captures the information they both need so it
+ * only exists in one place.
  * 
  * @author Nick
  */
