@@ -16,7 +16,8 @@ import org.jdom2.input.SAXBuilder;
 
 /**Class that handles the reading of XML files in several ways. The readXML(File) and readXML(InputStream) are present for future
  * functionality to make it possible for the user to load xml files in ProM. The readXML(FunctionalArchitectureModel) uses a hard
- * coded location of the xml document, this version is called in the current version of the program.
+ * coded location of the xml document, this version is called in the current version of the program. The xml file to read should be stored in 
+ * the /src/org.architecturemining.fam.IOfiles folder and be named jdomMade.xml.
  * 
  * @author Nick
  */

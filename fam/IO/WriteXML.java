@@ -11,7 +11,8 @@ import org.jdom2.output.XMLOutputter;
 
 /**functionality for building an FAM in .xml format using the JDOM2 library. Right now all parameters is hard coded to build an FAM, in the future
  * this can be build responsive. For the current project this was not yet needed, a hand build xml also would have sufficed. But I
- * enjoyed playing around with the jdom2 functionality.
+ * enjoyed playing around with the jdom2 functionality. The exported xml file is stored in the /src/org.architecturemining.fam.IOfiles 
+ * folder and is named traceExport.xml.
  * 
  * @author Nick
  */
