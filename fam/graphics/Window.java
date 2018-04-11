@@ -125,8 +125,13 @@ public class Window extends JFrame {
 				if(e.getSource() == famPanelComponents.getFeatureButtonList().get(i)) {
 					//adds pressed feature buttons to the tracelist
 					traceList.get(currentTrace).addFeature( famPanelComponents.getFeatureButtonList().get(i).getFeature());
-					//updates current trace text area
-					menuPanelComponents.getCurrentTraceTextArea().append("-"+ famPanelComponents.getFeatureButtonList().get(i).getName());
+					//updates current trace text area, when the text area is empty the "-" is left out
+					if(menuPanelComponents.getCurrentTraceTextArea().getText().isEmpty()) {
+						menuPanelComponents.getCurrentTraceTextArea().append(		famPanelComponents.getFeatureButtonList().get(i).getName());
+					}
+					else {
+						menuPanelComponents.getCurrentTraceTextArea().append("-" + 	famPanelComponents.getFeatureButtonList().get(i).getName());
+					}	
 				}
 			}
             repaint();
