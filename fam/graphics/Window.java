@@ -148,14 +148,14 @@ public class Window extends JFrame {
 
 			Graphics2D graph2 = (Graphics2D)g;
 			
-			//draw module borders and feature names
+			//draw module borders and module names
 			for(int i = 0 ; i < fam.getListModules().size(); i++) {
 				//draw module borders
 				graph2.draw(new Rectangle2D.Float(	(float) fam.getListModules().get(i).getOrigin().getX(),
 													(float) fam.getListModules().get(i).getOrigin().getY(), 
 															fam.getListModules().get(i).getWidth(), 
 															fam.getListModules().get(i).getHeight()	));
-				//draw feature names
+				//draw module names
 				graph2.drawString(			fam.getListModules().get(i).getName(),
 				            		(int)	fam.getListModules().get(i).getOrigin().getX() + 7, 
 				            		(int)	fam.getListModules().get(i).getOrigin().getY() + 15);
