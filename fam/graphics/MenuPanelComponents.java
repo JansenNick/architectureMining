@@ -10,16 +10,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 
 import org.architecturemining.fam.graphics.Window.ListenForButton;
+import org.architecturemining.fam.graphics.Window.ListenForTable;
 
 /**Handles all logic regarding the components in the menu panel. Holds all the required components for the menu panel.
  * 
  * @author Nick
  */
-public class MenuPanelComponents implements TableModelListener {
+public class MenuPanelComponents {
 	
 	JButton saveTrace, exportLog;
 	JLabel recordingLabel, exportLabel, nameLabel, descriptionLabel, currentTraceLabel;
@@ -38,6 +37,7 @@ public class MenuPanelComponents implements TableModelListener {
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			ListenForButton lForButton = window.new ListenForButton();
+			ListenForTable lForTable = window.new ListenForTable();
 						
 			nameLabel = new JLabel("Name trace:");
 			c.gridx = 0;
@@ -118,10 +118,10 @@ public class MenuPanelComponents implements TableModelListener {
 			table.setPreferredScrollableViewportSize(new Dimension(250,70));
 			table.setFillsViewportHeight(true);
 			table.getColumnModel().getColumn(2).setPreferredWidth(10);
+			table.getModel().addTableModelListener(lForTable);
 			
 			JScrollPane scrollpane= new JScrollPane(table);
 			menuPanel.add(scrollpane,c);
-			
 			
 			c.gridwidth = 1; //reset
 			c.ipady = 0; //reset
@@ -178,10 +178,9 @@ public class MenuPanelComponents implements TableModelListener {
 		return (boolean) tableModel.getValueAt(row, 2); 
 	}
 	
-	//verder uitwerken
-	public void tableChanged(TableModelEvent e) {
-		//window.repaint 
-		
-	}
+//	//verder uitwerken
+//	public void tableChanged(TableModelEvent e) {
+//		repaint();
+//	}
 	
 }

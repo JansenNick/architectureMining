@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 import org.architecturemining.fam.IO.ConsoleDemo;
 import org.architecturemining.fam.IO.ReadXML;
@@ -88,6 +90,7 @@ public class Window extends JFrame {
 
 			this.setVisible(true);
 			this.setResizable(true);
+			
 		}
 
 	/**Implementation of an action listener to respond to all user activity. 
@@ -145,7 +148,15 @@ public class Window extends JFrame {
             repaint();
 		}
 	}
+	
+	public class ListenForTable implements TableModelListener{
+
+		public void tableChanged(TableModelEvent e) {
+			repaint();
+		}
 		
+	}
+	
 	/**Draws all the elements required in the FamPanel(except for there arrowhead, those a defined in an seperate class).
 	 * @author Nick
 	 *
@@ -211,43 +222,54 @@ public class Window extends JFrame {
 				graph2.setColor(Color.BLACK);
 			}
 			
-			
-			if(menuPanelComponents.checkActiveRow(1)){
-				for(int j = 0; j + 1 < traceList.get(1).featureNameList.size(); j++) {
-                    
-					Double startX = (traceList.get(1).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(1).featureNameList.get(j).getWidth()/2);
-					Double startY = (traceList.get(1).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(1).featureNameList.get(j).getHeight()/2);
-					Double endX = 	(traceList.get(1).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(1).featureNameList.get(j+1).getWidth()/2);
-					Double endY = 	(traceList.get(1).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(1).featureNameList.get(j+1).getHeight()/2);
-					
-					//set color and stroke
-					graph2.setColor(Color.RED);
-					graph2.setStroke(new BasicStroke(2f));
-					
-					//draw arrowhead
-					int middleX = (int) (startX + ((endX-startX)/2));
-					int middleY = (int) (startY + ((endY-startY)/2));						
-					
-					Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
-					
-					Arrowhead arrowHead = new Arrowhead(12,12);	
-					arrowHead.rotateByDegrees(angle - 90);	
-					arrowHead.setLocation(middleX, middleY);
-					graph2.draw(arrowHead.getTransformedInstance());
-					
-					//draw trace
-					graph2.draw(new Line2D.Double(startX, startY, endX, endY));
-					
-					//reset color and stroke
-					graph2.setStroke(new BasicStroke(1f));
-					graph2.setColor(Color.BLACK);
+			for (int i = 0; i<20 ; i++) {
+				
+				if(menuPanelComponents.checkActiveRow(i)){
+					for(int j = 0; j + 1 < traceList.get(i).featureNameList.size(); j++) {
+	                    
+						Double startX = (traceList.get(i).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(i).featureNameList.get(j).getWidth()/2);
+						Double startY = (traceList.get(i).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(i).featureNameList.get(j).getHeight()/2);
+						Double endX = 	(traceList.get(i).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(i).featureNameList.get(j+1).getWidth()/2);
+						Double endY = 	(traceList.get(i).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(i).featureNameList.get(j+1).getHeight()/2);
+						
+						//set color and stroke
+						switch (i) {
+							case 0:	graph2.setColor(Color.BLUE);
+									break;
+							case 1:	graph2.setColor(Color.MAGENTA);
+									break;
+							case 2:	graph2.setColor(Color.GREEN);
+									break;
+							case 3:	graph2.setColor(Color.GRAY);
+									break;
+							case 4:	graph2.setColor(Color.PINK);
+									break;
+							case 5: graph2.setColor(Color.CYAN);
+						}
+
+						graph2.setStroke(new BasicStroke(2f));
+						
+						//draw arrowhead
+						int middleX = (int) (startX + ((endX-startX)/2));
+						int middleY = (int) (startY + ((endY-startY)/2));						
+						
+						Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
+						
+						Arrowhead arrowHead = new Arrowhead(12,12);	
+						arrowHead.rotateByDegrees(angle - 90);	
+						arrowHead.setLocation(middleX, middleY);
+						graph2.draw(arrowHead.getTransformedInstance());
+						
+						//draw trace
+						graph2.draw(new Line2D.Double(startX, startY, endX, endY));
+						
+						//reset color and stroke
+						graph2.setStroke(new BasicStroke(1f));
+						graph2.setColor(Color.BLACK);
+					}	
 				}
-				
-				
 			}
-			
 		}
-		
 	}
 
 }
