@@ -65,7 +65,7 @@ public class Window extends JFrame {
 			ConsoleDemo.main(fam);
 			
 			//Window
-			this.setSize(1100, 800);
+			this.setSize(1200, 800);
 
 			this.setTitle("FAM Sequence Creator");
 			
@@ -103,6 +103,11 @@ public class Window extends JFrame {
 				menuPanelComponents.getTextArea().append(	"Trace: " + menuPanelComponents.getNameField().getText() + "\n" + 
 															menuPanelComponents.getCurrentTraceTextArea().getText() + "\n\n"
 															);
+				menuPanelComponents.updateTable(menuPanelComponents.getNameField().getText(), currentTrace, 0);
+				menuPanelComponents.updateTable(menuPanelComponents.getCurrentTraceTextArea().getText(), currentTrace, 1);
+				//object meegeven gaat nog mis
+				Object[] toAddObject = {};
+				menuPanelComponents.addRow(toAddObject);
 				
 				traceList.get(currentTrace).setIdTrace("t"+currentTrace);
 				traceList.get(currentTrace).setNameTrace(menuPanelComponents.getNameField().getText());
@@ -120,11 +125,13 @@ public class Window extends JFrame {
 				TraceExportXML.writeXML(traceList);
 			}
 			
+			//happens every time a button is pushed
 			for(int i = 0 ; famPanelComponents.getFeatureButtonList().size() > i ; i++) {
 				//happens if one of the feature buttons is pushed
 				if(e.getSource() == famPanelComponents.getFeatureButtonList().get(i)) {
 					//adds pressed feature buttons to the tracelist
 					traceList.get(currentTrace).addFeature( famPanelComponents.getFeatureButtonList().get(i).getFeature());
+					
 					//updates current trace text area, when the text area is empty the "-" is left out
 					if(menuPanelComponents.getCurrentTraceTextArea().getText().isEmpty()) {
 						menuPanelComponents.getCurrentTraceTextArea().append(		famPanelComponents.getFeatureButtonList().get(i).getName());
@@ -134,6 +141,7 @@ public class Window extends JFrame {
 					}	
 				}
 			}
+			//refreshes all elements on the screen, so the new trace step becomes visible
             repaint();
 		}
 	}
@@ -202,7 +210,44 @@ public class Window extends JFrame {
 				graph2.setStroke(new BasicStroke(1f));
 				graph2.setColor(Color.BLACK);
 			}
-		}	
+			
+			
+			if(menuPanelComponents.checkActiveRow(1)){
+				for(int j = 0; j + 1 < traceList.get(1).featureNameList.size(); j++) {
+                    
+					Double startX = (traceList.get(1).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(1).featureNameList.get(j).getWidth()/2);
+					Double startY = (traceList.get(1).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(1).featureNameList.get(j).getHeight()/2);
+					Double endX = 	(traceList.get(1).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(1).featureNameList.get(j+1).getWidth()/2);
+					Double endY = 	(traceList.get(1).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(1).featureNameList.get(j+1).getHeight()/2);
+					
+					//set color and stroke
+					graph2.setColor(Color.RED);
+					graph2.setStroke(new BasicStroke(2f));
+					
+					//draw arrowhead
+					int middleX = (int) (startX + ((endX-startX)/2));
+					int middleY = (int) (startY + ((endY-startY)/2));						
+					
+					Double angle = Math.atan2(endY-startY, endX-startX)* (180 / Math.PI);
+					
+					Arrowhead arrowHead = new Arrowhead(12,12);	
+					arrowHead.rotateByDegrees(angle - 90);	
+					arrowHead.setLocation(middleX, middleY);
+					graph2.draw(arrowHead.getTransformedInstance());
+					
+					//draw trace
+					graph2.draw(new Line2D.Double(startX, startY, endX, endY));
+					
+					//reset color and stroke
+					graph2.setStroke(new BasicStroke(1f));
+					graph2.setColor(Color.BLACK);
+				}
+				
+				
+			}
+			
+		}
+		
 	}
 
 }

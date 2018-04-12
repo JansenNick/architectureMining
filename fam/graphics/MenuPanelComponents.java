@@ -1,4 +1,5 @@
 package org.architecturemining.fam.graphics;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -6,8 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 import org.architecturemining.fam.graphics.Window.ListenForButton;
 
@@ -15,19 +19,21 @@ import org.architecturemining.fam.graphics.Window.ListenForButton;
  * 
  * @author Nick
  */
-public class MenuPanelComponents {
+public class MenuPanelComponents implements TableModelListener {
 	
 	JButton saveTrace, exportLog;
 	JLabel recordingLabel, exportLabel, nameLabel, descriptionLabel, currentTraceLabel;
 	JTextArea textArea, descriptionArea, currentTraceArea;
 	JTextField nameField;
+	JTable table;
+	MyTableModel tableModel;
 	
 	/**Adds all the components to the menuPanel at the right place and size.
 	 * @param menuPanel		panel to which the components should be added
 	 * @param window		top level JFrame(Window) to which the components are added, required of the action listeners.
 	 */
 	public void addMenuPanelComponents(JPanel menuPanel, Window window) {
-			
+		
 			menuPanel.setLayout(new GridBagLayout());	
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
@@ -106,8 +112,17 @@ public class MenuPanelComponents {
 			c.gridy = 9;
 			c.ipady = 250; 
 			c.gridwidth = c.REMAINDER;
-			JScrollPane scrollpane= new JScrollPane(textArea);
+			
+			tableModel = new MyTableModel();
+			table = new JTable(tableModel);
+			table.setPreferredScrollableViewportSize(new Dimension(250,70));
+			table.setFillsViewportHeight(true);
+			table.getColumnModel().getColumn(2).setPreferredWidth(10);
+			
+			JScrollPane scrollpane= new JScrollPane(table);
 			menuPanel.add(scrollpane,c);
+			
+			
 			c.gridwidth = 1; //reset
 			c.ipady = 0; //reset
 			
@@ -150,5 +165,23 @@ public class MenuPanelComponents {
 	public JTextArea getDescriptionTextArea() {
 		return descriptionArea;
 	}
-
+	
+	public void updateTable(Object a, int row, int column) {
+		table.setValueAt(a, row, column);
+	}
+	
+	public void addRow(Object[] rowData) {
+		tableModel.addRow(rowData);
+	}
+	
+	public boolean checkActiveRow(int row) {
+		return (boolean) tableModel.getValueAt(row, 2); 
+	}
+	
+	//verder uitwerken
+	public void tableChanged(TableModelEvent e) {
+		//window.repaint 
+		
+	}
+	
 }
