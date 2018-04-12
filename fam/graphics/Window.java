@@ -194,10 +194,10 @@ public class Window extends JFrame {
 			//draw traces
 			for(int j = 0; j + 1 < traceList.get(currentTrace).featureNameList.size(); j++) {
 						                    
-				Double startX = (traceList.get(currentTrace).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(currentTrace).featureNameList.get(j).getWidth()/2);
-				Double startY = (traceList.get(currentTrace).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(currentTrace).featureNameList.get(j).getHeight()/2);
-				Double endX = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getWidth()/2);
-				Double endY = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getHeight()/2);
+				Double startX = (traceList.get(currentTrace).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(currentTrace).featureNameList.get(j).getWidth()/2)-5;
+				Double startY = (traceList.get(currentTrace).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(currentTrace).featureNameList.get(j).getHeight()/2)-5;
+				Double endX = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getWidth()/2)-5;
+				Double endY = 	(traceList.get(currentTrace).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(currentTrace).featureNameList.get(j+1).getHeight()/2)-5;
 				
 				//set color and stroke
 				graph2.setColor(Color.RED);
@@ -227,10 +227,10 @@ public class Window extends JFrame {
 				if(menuPanelComponents.checkActiveRow(i)){
 					for(int j = 0; j + 1 < traceList.get(i).featureNameList.size(); j++) {
 	                    
-						Double startX = (traceList.get(i).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(i).featureNameList.get(j).getWidth()/2);
-						Double startY = (traceList.get(i).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(i).featureNameList.get(j).getHeight()/2);
-						Double endX = 	(traceList.get(i).featureNameList.get(j+1).getOrigin().getX() 	+ traceList.get(i).featureNameList.get(j+1).getWidth()/2);
-						Double endY = 	(traceList.get(i).featureNameList.get(j+1).getOrigin().getY() 	+ traceList.get(i).featureNameList.get(j+1).getHeight()/2);
+						Double startX = 2*i+(traceList.get(i).featureNameList.get(j).getOrigin().getX() 		+ traceList.get(i).featureNameList.get(j).getWidth()/2);
+						Double startY = 2*i+(traceList.get(i).featureNameList.get(j).getOrigin().getY() 		+ traceList.get(i).featureNameList.get(j).getHeight()/2);
+						Double endX = 	2*i+(traceList.get(i).featureNameList.get(j+1).getOrigin().getX() 		+ traceList.get(i).featureNameList.get(j+1).getWidth()/2);
+						Double endY = 	2*i+(traceList.get(i).featureNameList.get(j+1).getOrigin().getY() 		+ traceList.get(i).featureNameList.get(j+1).getHeight()/2);
 						
 						//set color and stroke
 						switch (i) {
