@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 
 import org.architecturemining.fam.graphics.Window.FamPanel;
 import org.architecturemining.fam.graphics.Window.ListenForButton;
+import org.architecturemining.fam.model.Feature;
 import org.architecturemining.fam.model.FunctionalArchitectureModel;
 
 /**Handles all logic regarding the components in the fam panel. Holds a list of FButtons to store all the features of the fam data model.
@@ -44,16 +45,18 @@ public class FamPanelComponents {
 		
 					featureButtonList.add(new FButton());
 					
+					Feature feature = fam.getListModules().get(i).getFeatureList().get(j);
+					
 					featureButtonList.get(counter).setBounds(
-							(int) 	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getX(),
-							(int) 	fam.getListModules().get(i).getFeatureList().get(j).getOrigin().getY(), 
-									fam.getListModules().get(i).getFeatureList().get(j).getWidth(), 
-									fam.getListModules().get(i).getFeatureList().get(j).getHeight()
+							(int) 	feature.getOrigin().getX(),
+							(int) 	feature.getOrigin().getY(), 
+									feature.getWidth(), 
+									feature.getHeight()
 							);
-					featureButtonList.get(counter).setFeature(fam.getListModules().get(i).getFeatureList().get(j));
+					featureButtonList.get(counter).setFeature(feature);
 					featureButtonList.get(counter).addActionListener(lForButton);
-					featureButtonList.get(counter).setName(fam.getListModules().get(i).getFeatureList().get(j).getName());
-					featureButtonList.get(counter).setText(fam.getListModules().get(i).getFeatureList().get(j).getName());
+					//adds text to button
+					featureButtonList.get(counter).setText(feature.getId() + ": " + feature.getName());
 					famPanel.add(featureButtonList.get(counter));
 				
 					counter++;

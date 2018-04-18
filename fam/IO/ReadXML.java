@@ -73,7 +73,7 @@ public class ReadXML {
 		for (Element moduleEle : root.getChildren("FAMnode")) {
 			//Parsing of Modules
 			//Creates new module(id, name, point, width, height)
-			Module module = new Module("3", 
+			Module module = new Module(moduleEle.getChildText("id"), 
 									   moduleEle.getChildText("name"),
 									   new Point2D.Double(	Integer.parseInt(moduleEle.getChildText("origin").split(",")[0]),
 													      	Integer.parseInt(moduleEle.getChildText("origin").split(",")[1])	),
@@ -85,7 +85,7 @@ public class ReadXML {
 			for (Element featureEle : moduleEle.getChildren("FAMnode")) {	
 				//Parsing of Features
 				//Creates new feature(id, name, point, width, height)
-				Feature feature = new Feature(	"5", 
+				Feature feature = new Feature(	featureEle.getChildText("id"), 
 												featureEle.getChildText("name"), 
 												new Point2D.Double(	Integer.parseInt(featureEle.getChildText("origin").split(",")[0]),
 						  									  	   	Integer.parseInt(featureEle.getChildText("origin").split(",")[1])	), 

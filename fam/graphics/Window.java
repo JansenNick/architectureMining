@@ -137,10 +137,10 @@ public class Window extends JFrame {
 					
 					//updates current trace text area, when the text area is empty the "-" is left out
 					if(menuPanelComponents.getCurrentTraceTextArea().getText().isEmpty()) {
-						menuPanelComponents.getCurrentTraceTextArea().append(		famPanelComponents.getFeatureButtonList().get(i).getName());
+						menuPanelComponents.getCurrentTraceTextArea().append(		famPanelComponents.getFeatureButtonList().get(i).getFeature().getId());
 					}
 					else {
-						menuPanelComponents.getCurrentTraceTextArea().append("-" + 	famPanelComponents.getFeatureButtonList().get(i).getName());
+						menuPanelComponents.getCurrentTraceTextArea().append("-" + 	famPanelComponents.getFeatureButtonList().get(i).getFeature().getId());
 					}	
 				}
 			}

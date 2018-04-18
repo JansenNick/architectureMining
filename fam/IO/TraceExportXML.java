@@ -49,7 +49,8 @@ public class TraceExportXML {
 				
 				Element feature = new Element("feature");
 				feature.setAttribute("order", ""+j);
-				feature.setAttribute("id",traceList.get(i).getNameFeatureList().get(j).getName());
+				feature.setAttribute("id",traceList.get(i).getNameFeatureList().get(j).getId());
+				feature.setAttribute("name",traceList.get(i).getNameFeatureList().get(j).getName());
 				trace.addContent(feature);
 			}
 			

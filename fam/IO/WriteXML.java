@@ -33,26 +33,26 @@ private static void writeXML() {
 	doc.setRootElement(theRoot);
 	
 	//creation of modules
-	Element moduleA = createFAMnode("module", "A", "130,45", "124", "183");
-	Element moduleB = createFAMnode("module", "B", "491,45", "208", "365");
-	Element moduleC = createFAMnode("module", "C", "104,407", "213", "311");
-	Element moduleD = createFAMnode("module", "D", "492,307", "311", "362");
+	Element moduleA = createFAMnode("module", "m1", "Payment", "130,45", "124", "183");
+	Element moduleB = createFAMnode("module", "m2", "Ticket Sales", "491,45", "208", "365");
+	Element moduleC = createFAMnode("module", "m3", "Contract management", "104,407", "213", "311");
+	Element moduleD = createFAMnode("module", "m4", "Acquisition", "492,307", "311", "362");
 	
 	//creation of features
-	Element featureQ = createFAMnode("feature", "Q", "140,71", "60", "120");
-	Element featureR = createFAMnode("feature", "R", "520,144", "60", "120");
-	Element featureP = createFAMnode("feature", "P", "726,71", "60", "120");
-	Element featureW = createFAMnode("feature", "W", "141,428", "60", "120");	
-	Element featureX = createFAMnode("feature", "X", "287,511", "60", "120");
-	Element featureT = createFAMnode("feature", "T", "520,365", "60", "120");
-	Element featureU = createFAMnode("feature", "U", "520,512", "60", "120");
-	Element featureS = createFAMnode("feature", "S", "728,367", "60", "120");
-	Element featureV = createFAMnode("feature", "V", "728,510", "60", "120");
+	Element featureQ = createFAMnode("feature", "f1", "Test", "140,71", "60", "120");
+	Element featureR = createFAMnode("feature", "f2", "R", "520,144", "60", "120");
+	Element featureP = createFAMnode("feature", "f3", "P", "726,71", "60", "120");
+	Element featureW = createFAMnode("feature", "f4", "W", "141,428", "60", "120");	
+	Element featureX = createFAMnode("feature", "f5", "X", "287,511", "60", "120");
+	Element featureT = createFAMnode("feature", "f6", "T", "520,365", "60", "120");
+	Element featureU = createFAMnode("feature", "f7", "J", "520,512", "60", "120");
+	Element featureS = createFAMnode("feature", "f8", "S", "728,367", "60", "120");
+	Element featureV = createFAMnode("feature", "f9", "V", "728,510", "60", "120");
 	
 	//creation of lines
 	Element line1 = createLine("infoFlow","infoFlow1", "R", "P");
 	Element line2 = createLine("infoFlow","infoFlow2", "X","T");
-	Element line3 = createLine("infoFlow","infoFlow3", "W","Q");
+	Element line3 = createLine("infoFlow","infoFlow3", "W","Test");
 	
 	//adding features to modules
 	moduleA.addContent(featureQ);
@@ -88,32 +88,28 @@ private static void writeXML() {
 	}
 }
 
-private static Element createFAMnode(String nodeType, String nodeName, String nodeOrigin, String nodeHeight, String nodeWidth) {
+private static Element createFAMnode(String nodeType, String nodeId, String nodeName, String nodeOrigin, String nodeHeight, String nodeWidth) {
 	
 	Element FAMnode = new Element("FAMnode");
 	FAMnode.setAttribute("type", nodeType);
 		
-		//create first node in FAMnode
 		Element name = new Element("name");
-		//add content to first node
 		name.addContent(new Text(nodeName));
-	
-		//create second node in show node
+
+		Element id = new Element("id");
+		id.addContent(new Text(nodeId));
+		
 		Element origin = new Element("origin");
-		//add content to second node
 		origin.addContent(new Text(nodeOrigin));
 		
-		//create second node in show node
 		Element height = new Element("height");
-		//add content to second node
 		height.addContent(new Text(nodeHeight));
 		
-		//create second node in show node
 		Element width = new Element("width");
-		//add content to second node
 		width.addContent(new Text(nodeWidth));
 	
 	FAMnode.addContent(name);
+	FAMnode.addContent(id);
 	FAMnode.addContent(origin);
 	FAMnode.addContent(height);
 	FAMnode.addContent(width);
