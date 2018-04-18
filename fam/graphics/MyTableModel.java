@@ -11,7 +11,7 @@ class MyTableModel extends DefaultTableModel{
 	
 	private boolean DEBUG = false;
 	
-	private String[] columnNames = {"First Name", "Last Name", "Sport"};
+	private String[] columnNames = {"Name", "Trace", "#"};
 	private Object[][] data = {
 			{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},{"", "", new Boolean(false)},
 	};	
@@ -21,10 +21,10 @@ class MyTableModel extends DefaultTableModel{
 		return columnNames.length;
 	}
 
-//	public int getRowCount() {
-//		return data.length;
-//	}
-
+    public String getColumnName(int col) {
+        return columnNames[col];
+    }
+	
 	public Object getValueAt(int row, int col) {
 		return data[row][col];
 	}
