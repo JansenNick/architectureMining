@@ -213,6 +213,7 @@ public class Window extends JFrame {
 				arrowHead.rotateByDegrees(angle - 90);	
 				arrowHead.setLocation(middleX, middleY);
 				graph2.draw(arrowHead.getTransformedInstance());
+				graph2.drawString("" + j, middleX+10, middleY+10);
 				
 				//draw trace
 				graph2.draw(new Line2D.Double(startX, startY, endX, endY));
@@ -262,6 +263,7 @@ public class Window extends JFrame {
 						
 						//draw trace
 						graph2.draw(new Line2D.Double(startX, startY, endX, endY));
+						graph2.drawString("" + j, middleX + 10, middleY + 10);
 						
 						//reset color and stroke
 						graph2.setStroke(new BasicStroke(1f));
