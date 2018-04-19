@@ -165,12 +165,20 @@ public class MenuPanelComponents {
 		return descriptionArea;
 	}
 	
-	public void updateTable(Object a, int row, int column) {
-		table.setValueAt(a, row, column);
+//	public void updateTable(Object a, int row, int column) {
+//		table.setValueAt(a, row, column);
+//	}
+	
+	public void addRow(Object[] rowData, int row) {
+		tableModel.addRow(rowData);
+		table.setValueAt(rowData[0], row, 0);
+		table.setValueAt(rowData[1], row, 1);
 	}
 	
-	public void addRow(Object[] rowData) {
-		tableModel.addRow(rowData);
+	public void removeRow(Object[] rowData, int row) {
+		tableModel.removeRow(row);
+		table.setValueAt(rowData[0], row, 0);
+		table.setValueAt(rowData[1], row, 1);
 	}
 	
 	public boolean checkActiveRow(int row) {

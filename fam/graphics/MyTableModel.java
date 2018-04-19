@@ -13,8 +13,8 @@ class MyTableModel extends DefaultTableModel{
 	
 	private String[] columnNames = {"Name", "Trace", "#"};
 	private Object[][] data = {
-			{"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}
-	};	
+			{"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}, {"", "", new Boolean(false)}};
+
 	
 	public int getColumnCount() {
 		return columnNames.length;

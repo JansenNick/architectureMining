@@ -104,11 +104,20 @@ public class Window extends JFrame {
 			
 			//happens if the "Save trace" button is pushed
 			if(e.getSource() == menuPanelComponents.getSaveTrace()) {
-				menuPanelComponents.updateTable(menuPanelComponents.getNameField().getText(), currentTrace, 0);
-				menuPanelComponents.updateTable(menuPanelComponents.getCurrentTraceTextArea().getText(), currentTrace, 1);
+//				menuPanelComponents.updateTable(menuPanelComponents.getNameField().getText(), currentTrace, 0);
+//				menuPanelComponents.updateTable(menuPanelComponents.getCurrentTraceTextArea().getText(), currentTrace, 1);
 				
-				Object[] toAddObject = {};
-				menuPanelComponents.addRow(toAddObject);
+//				Object[] toAddObject = {};
+//				menuPanelComponents.addRow(toAddObject);
+				
+				String a = menuPanelComponents.getNameField().getText();
+				String b = menuPanelComponents.getCurrentTraceTextArea().getText();
+				Boolean c = true;
+				Object[] toAddObject2 = {a,b,c};
+				
+				menuPanelComponents.addRow(toAddObject2, currentTrace);
+				//menuPanelComponents.tableModel.fireTableRowsUpdated(0, 4);
+				//fireTableCellUpdated(row, col);
 				
 				traceList.get(currentTrace).setIdTrace("t"+currentTrace);
 				traceList.get(currentTrace).setNameTrace(menuPanelComponents.getNameField().getText());
@@ -145,14 +154,26 @@ public class Window extends JFrame {
 			
 			//happens every time the delete selected traces buttons is pushed
 			if(e.getSource() == menuPanelComponents.getDeleteTraces()) {
-				
-				for(int i = 0 ; i < 20 ; i++) {
-					if((boolean) menuPanelComponents.tableModel.getValueAt(i, 2));
-//						//menuPanelComponents.tableModel.removeRow(i);
-//						menuPanelComponents.updateTable("", i, 0);
-//						menuPanelComponents.updateTable("", i, 1);
-//						traceList.remove(i);
+	
+		        //removes bottom row instead of selected
+				if((boolean) menuPanelComponents.tableModel.getValueAt(0, 2)) {
+					Object[] emptyRow = {"","",false};
+					menuPanelComponents.removeRow(emptyRow, 0);
+					menuPanelComponents.tableModel.fireTableRowsDeleted(0, 0);
 				}
+				
+//				for(int i = 0 ; i < 20 ; i++) {
+//					if((boolean) menuPanelComponents.tableModel.getValueAt(i, 2));
+//						
+//						Object[] emptyRow = {"","",false};
+//						menuPanelComponents.removeRow(emptyRow, i);
+//						menuPanelComponents.tableModel.fireTableRowsDeleted(i, i);
+//						
+//						//menuPanelComponents.tableModel.removeRow(i);
+//						//menuPanelComponents.updateTable("", i, 0);
+//						//menuPanelComponents.updateTable("", i, 1);
+//						//traceList.remove(i);
+//				}
 			}
 			//refreshes all elements on the screen, so the new trace step becomes visible
             repaint();
@@ -220,26 +241,26 @@ public class Window extends JFrame {
 			drawTrace(g, Color.RED, traceList.get(currentTrace).featureNameList, -5);
 			
 			//draw logbook traces
-			for (int i = 0; i<20 ; i++) {
-				
-				if(menuPanelComponents.checkActiveRow(i)){
-					Color c = Color.GRAY;
-					switch (i) {
-					case 0:	c = Color.BLUE;
-							break;
-					case 1:	c = Color.MAGENTA;
-							break;
-					case 2:	c = Color.GREEN;
-							break;
-					case 3:	c = Color.DARK_GRAY;
-							break;
-					case 4:	c = Color.PINK;
-							break;
-					case 5: c = Color.CYAN;
-				}	
-					drawTrace(g, c, traceList.get(i).featureNameList, 3*i);
-				}
-			}
+//			for (int i = 0; i<20 ; i++) {
+//				
+//				if(menuPanelComponents.checkActiveRow(i)){
+//					Color c = Color.GRAY;
+//					switch (i) {
+//					case 0:	c = Color.BLUE;
+//							break;
+//					case 1:	c = Color.MAGENTA;
+//							break;
+//					case 2:	c = Color.GREEN;
+//							break;
+//					case 3:	c = Color.DARK_GRAY;
+//							break;
+//					case 4:	c = Color.PINK;
+//							break;
+//					case 5: c = Color.CYAN;
+//				}	
+//					drawTrace(g, c, traceList.get(i).featureNameList, 3*i);
+//				}
+//			}
 		}
 		public void drawTrace(Graphics g, Color color, ArrayList<Feature> traceArray, int offset) {
 					
