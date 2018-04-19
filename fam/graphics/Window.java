@@ -104,9 +104,6 @@ public class Window extends JFrame {
 			
 			//happens if the "Save trace" button is pushed
 			if(e.getSource() == menuPanelComponents.getSaveTrace()) {
-				menuPanelComponents.getTextArea().append(	"Trace: " + menuPanelComponents.getNameField().getText() + "\n" + 
-															menuPanelComponents.getCurrentTraceTextArea().getText() + "\n\n"
-															);
 				menuPanelComponents.updateTable(menuPanelComponents.getNameField().getText(), currentTrace, 0);
 				menuPanelComponents.updateTable(menuPanelComponents.getCurrentTraceTextArea().getText(), currentTrace, 1);
 				
@@ -143,6 +140,18 @@ public class Window extends JFrame {
 					else {
 						menuPanelComponents.getCurrentTraceTextArea().append("-" + 	famPanelComponents.getFeatureButtonList().get(i).getFeature().getId());
 					}	
+				}
+			}
+			
+			//happens every time the delete selected traces buttons is pushed
+			if(e.getSource() == menuPanelComponents.getDeleteTraces()) {
+				
+				for(int i = 0 ; i < 20 ; i++) {
+					if((boolean) menuPanelComponents.tableModel.getValueAt(i, 2));
+//						//menuPanelComponents.tableModel.removeRow(i);
+//						menuPanelComponents.updateTable("", i, 0);
+//						menuPanelComponents.updateTable("", i, 1);
+//						traceList.remove(i);
 				}
 			}
 			//refreshes all elements on the screen, so the new trace step becomes visible

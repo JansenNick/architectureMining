@@ -31,11 +31,8 @@ public class FamPanelComponents {
 	public void addFamPanelComponents(FunctionalArchitectureModel fam, FamPanel famPanel, Window window) {
 			
 			famPanel.setLayout(null);
-			
 			featureButtonList = new ArrayList<FButton>();
-			
 			int counter = 0;
-			
 			ListenForButton lForButton = window.new ListenForButton();
 			
 			//loop through modules
@@ -69,5 +66,4 @@ public class FamPanelComponents {
 	public ArrayList<FButton> getFeatureButtonList(){
 		return featureButtonList;
 	}
-	
 }

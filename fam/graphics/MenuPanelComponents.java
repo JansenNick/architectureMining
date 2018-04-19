@@ -20,9 +20,9 @@ import org.architecturemining.fam.graphics.Window.ListenForTable;
  */
 public class MenuPanelComponents {
 	
-	JButton saveTrace, exportLog;
+	JButton saveTrace, exportLog, deleteTraces;
 	JLabel recordingLabel, exportLabel, nameLabel, descriptionLabel, currentTraceLabel;
-	JTextArea textArea, descriptionArea, currentTraceArea;
+	JTextArea descriptionArea, currentTraceArea;
 	JTextField nameField;
 	JTable table;
 	MyTableModel tableModel;
@@ -104,31 +104,30 @@ public class MenuPanelComponents {
 			c.weighty = 1;
 			menuPanel.add(recordingLabel,c);
 	
-			textArea = new JTextArea("");
-			textArea.setLineWrap(true);
-			textArea.setWrapStyleWord(true);
-			textArea.setEditable(false);
+			tableModel = new MyTableModel();
 			c.gridx = 0;
 			c.gridy = 9;
-			c.ipady = 250; 
+			c.ipady = 220; 
 			c.gridwidth = c.REMAINDER;
-			
-			tableModel = new MyTableModel();
 			table = new JTable(tableModel);
 			table.setPreferredScrollableViewportSize(new Dimension(250,70));
 			table.setFillsViewportHeight(true);
 			table.getColumnModel().getColumn(2).setPreferredWidth(10);
 			table.getModel().addTableModelListener(lForTable);
-			
 			JScrollPane scrollpane= new JScrollPane(table);
 			menuPanel.add(scrollpane,c);
-			
 			c.gridwidth = 1; //reset
 			c.ipady = 0; //reset
 			
-			exportLabel = new JLabel("Export");
+			deleteTraces = new JButton("Delete selected traces");
+			deleteTraces.addActionListener(lForButton);
 			c.gridx = 0;
 			c.gridy = 10;
+			menuPanel.add(deleteTraces,c);
+			
+			exportLabel = new JLabel("Export");
+			c.gridx = 0;
+			c.gridy = 11;
 			c.weighty = 1;
 			c.ipadx = 0;
 			
@@ -137,7 +136,7 @@ public class MenuPanelComponents {
 			exportLog = new JButton("Export");
 			exportLog.addActionListener(lForButton);
 			c.gridx = 0;
-			c.gridy = 11;
+			c.gridy = 12;
 			c.weighty = 5;
 			menuPanel.add(exportLog,c);		
 		}
@@ -150,8 +149,8 @@ public class MenuPanelComponents {
 		return exportLog;
 	}
 	
-	public JTextArea getTextArea() {
-		return textArea;
+	public JButton getDeleteTraces() {
+		return deleteTraces;
 	}
 	
 	public JTextArea getCurrentTraceTextArea() {
@@ -177,10 +176,5 @@ public class MenuPanelComponents {
 	public boolean checkActiveRow(int row) {
 		return (boolean) tableModel.getValueAt(row, 2); 
 	}
-	
-//	//verder uitwerken
-//	public void tableChanged(TableModelEvent e) {
-//		repaint();
-//	}
 	
 }
