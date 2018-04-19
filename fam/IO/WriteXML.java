@@ -33,43 +33,43 @@ private static void writeXML() {
 	doc.setRootElement(theRoot);
 	
 	//creation of modules
-	Element moduleA = createFAMnode("module", "m1", "Payment", "130,45", "124", "183");
-	Element moduleB = createFAMnode("module", "m2", "Ticket Sales", "491,45", "208", "365");
-	Element moduleC = createFAMnode("module", "m3", "Contract management", "104,407", "213", "311");
-	Element moduleD = createFAMnode("module", "m4", "Acquisition", "492,307", "311", "362");
+	Element m1 = createFAMnode("module", "m1", "Payment"			, "130,45" , "124", "183");
+	Element m2 = createFAMnode("module", "m2", "Ticket Sales"		, "491,45" , "208", "365");
+	Element m3 = createFAMnode("module", "m3", "Contract management", "104,407", "213", "311");
+	Element m4 = createFAMnode("module", "m4", "Acquisition"		, "492,307", "311", "362");
 	
 	//creation of features
-	Element featureQ = createFAMnode("feature", "f1", "Test", "140,71", "60", "120");
-	Element featureR = createFAMnode("feature", "f2", "R", "520,144", "60", "120");
-	Element featureP = createFAMnode("feature", "f3", "P", "726,71", "60", "120");
-	Element featureW = createFAMnode("feature", "f4", "W", "141,428", "60", "120");	
-	Element featureX = createFAMnode("feature", "f5", "X", "287,511", "60", "120");
-	Element featureT = createFAMnode("feature", "f6", "T", "520,365", "60", "120");
-	Element featureU = createFAMnode("feature", "f7", "J", "520,512", "60", "120");
-	Element featureS = createFAMnode("feature", "f8", "S", "728,367", "60", "120");
-	Element featureV = createFAMnode("feature", "f9", "V", "728,510", "60", "120");
+	Element f1 = createFAMnode("feature", "f1", "Send"		, "140,71" , "60", "120");
+	Element f2 = createFAMnode("feature", "f2", "Receive"	, "520,144", "60", "120");
+	Element f3 = createFAMnode("feature", "f3", "Process"	, "726,71" , "60", "120");
+	Element f4 = createFAMnode("feature", "f4", "Calculate"	, "141,428", "60", "120");	
+	Element f5 = createFAMnode("feature", "f5", "Split"		, "287,511", "60", "120");
+	Element f6 = createFAMnode("feature", "f6", "Authorize"	, "520,365", "60", "120");
+	Element f7 = createFAMnode("feature", "f7", "Delete"	, "520,512", "60", "120");
+	Element f8 = createFAMnode("feature", "f8", "Save"		, "728,367", "60", "120");
+	Element f9 = createFAMnode("feature", "f9", "Open"		, "728,510", "60", "120");
 	
 	//creation of lines
-	Element line1 = createLine("infoFlow","infoFlow1", "R", "P");
-	Element line2 = createLine("infoFlow","infoFlow2", "X","T");
-	Element line3 = createLine("infoFlow","infoFlow3", "W","Test");
+	Element line1 = createLine("infoFlow","ticketData", "Receive"  , "Process");
+	Element line2 = createLine("infoFlow","contracts", "Split"    ,"Authorize");
+	Element line3 = createLine("infoFlow","price", "Calculate","Send");
 	
 	//adding features to modules
-	moduleA.addContent(featureQ);
-	moduleB.addContent(featureR);
-	moduleB.addContent(featureP);
-	moduleC.addContent(featureW);
-	moduleC.addContent(featureX);
-	moduleD.addContent(featureT);
-	moduleD.addContent(featureU);
-	moduleD.addContent(featureS);
-	moduleD.addContent(featureV);
+	m1.addContent(f1);
+	m2.addContent(f2);
+	m2.addContent(f3);
+	m3.addContent(f4);
+	m3.addContent(f5);
+	m4.addContent(f6);
+	m4.addContent(f7);
+	m4.addContent(f8);
+	m4.addContent(f9);
 	
 	//adding modules to root
-	theRoot.addContent(moduleA);
-	theRoot.addContent(moduleB);
-	theRoot.addContent(moduleC);
-	theRoot.addContent(moduleD);
+	theRoot.addContent(m1);
+	theRoot.addContent(m2);
+	theRoot.addContent(m3);
+	theRoot.addContent(m4);
 	
 	//adding infoFlows to root
 	theRoot.addContent(line1);
