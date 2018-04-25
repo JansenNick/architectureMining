@@ -20,7 +20,7 @@ import org.architecturemining.fam.graphics.Window.ListenForTable;
  */
 public class MenuPanelComponents {
 	
-	JButton saveTrace, exportLog, deleteTraces;
+	JButton saveTrace, exportLog;
 	JLabel recordingLabel, exportLabel, nameLabel, descriptionLabel, currentTraceLabel;
 	JTextArea descriptionArea, currentTraceArea;
 	JTextField nameField;
@@ -117,17 +117,11 @@ public class MenuPanelComponents {
 			JScrollPane scrollpane= new JScrollPane(table);
 			menuPanel.add(scrollpane,c);
 			c.gridwidth = 1; //reset
-			c.ipady = 0; //reset
-			
-			deleteTraces = new JButton("Delete selected traces");
-			deleteTraces.addActionListener(lForButton);
-			c.gridx = 0;
-			c.gridy = 10;
-			menuPanel.add(deleteTraces,c);
+			c.ipady = 0; //reset			
 			
 			exportLabel = new JLabel("Export");
 			c.gridx = 0;
-			c.gridy = 11;
+			c.gridy = 10;
 			c.weighty = 1;
 			c.ipadx = 0;
 			
@@ -136,7 +130,7 @@ public class MenuPanelComponents {
 			exportLog = new JButton("Export");
 			exportLog.addActionListener(lForButton);
 			c.gridx = 0;
-			c.gridy = 12;
+			c.gridy = 11;
 			c.weighty = 5;
 			menuPanel.add(exportLog,c);		
 		}
@@ -147,10 +141,6 @@ public class MenuPanelComponents {
 	
 	public JButton getExportLog() {
 		return exportLog;
-	}
-	
-	public JButton getDeleteTraces() {
-		return deleteTraces;
 	}
 	
 	public JTextArea getCurrentTraceTextArea() {

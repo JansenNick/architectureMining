@@ -144,16 +144,16 @@ public class Window extends JFrame {
 			}
 			
 			//happens every time the delete selected traces buttons is pushed
-			if(e.getSource() == menuPanelComponents.getDeleteTraces()) {
-				
-				for(int i = 0 ; i < 20 ; i++) {
-					if((boolean) menuPanelComponents.tableModel.getValueAt(i, 2));
-//						//menuPanelComponents.tableModel.removeRow(i);
-//						menuPanelComponents.updateTable("", i, 0);
-//						menuPanelComponents.updateTable("", i, 1);
-//						traceList.remove(i);
-				}
-			}
+//			if(e.getSource() == menuPanelComponents.getDeleteTraces()) {
+//				
+//				for(int i = 0 ; i < 20 ; i++) {
+//					if((boolean) menuPanelComponents.tableModel.getValueAt(i, 2));
+////						//menuPanelComponents.tableModel.removeRow(i);
+////						menuPanelComponents.updateTable("", i, 0);
+////						menuPanelComponents.updateTable("", i, 1);
+////						traceList.remove(i);
+//				}
+//			}
 			//refreshes all elements on the screen, so the new trace step becomes visible
             repaint();
 		}
