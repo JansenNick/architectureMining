@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FAM>
+  <FAMnode type="module">
+    <name>Payment</name>
+    <id>m1</id>
+    <origin>130,45</origin>
+    <height>124</height>
+    <width>183</width>
+    <FAMnode type="feature">
+      <name>Send</name>
+      <id>f1</id>
+      <origin>140,71</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+  </FAMnode>
+  <FAMnode type="module">
+    <name>Ticket Sales</name>
+    <id>m2</id>
+    <origin>491,45</origin>
+    <height>208</height>
+    <width>365</width>
+    <FAMnode type="feature">
+      <name>Receive</name>
+      <id>f2</id>
+      <origin>520,144</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+    <FAMnode type="feature">
+      <name>Process</name>
+      <id>f3</id>
+      <origin>726,71</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+  </FAMnode>
+  <FAMnode type="module">
+    <name>Contract management</name>
+    <id>m3</id>
+    <origin>104,407</origin>
+    <height>213</height>
+    <width>311</width>
+    <FAMnode type="feature">
+      <name>Calculate</name>
+      <id>f4</id>
+      <origin>141,428</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+    <FAMnode type="feature">
+      <name>Split</name>
+      <id>f5</id>
+      <origin>287,511</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+  </FAMnode>
+  <FAMnode type="module">
+    <name>Acquisition</name>
+    <id>m4</id>
+    <origin>492,307</origin>
+    <height>311</height>
+    <width>362</width>
+    <FAMnode type="feature">
+      <name>Authorize</name>
+      <id>f6</id>
+      <origin>520,365</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+    <FAMnode type="feature">
+      <name>Delete</name>
+      <id>f7</id>
+      <origin>520,512</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+    <FAMnode type="feature">
+      <name>Save</name>
+      <id>f8</id>
+      <origin>728,367</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+    <FAMnode type="feature">
+      <name>Open</name>
+      <id>f9</id>
+      <origin>728,510</origin>
+      <height>60</height>
+      <width>120</width>
+    </FAMnode>
+  </FAMnode>
+  <line type="infoFlow" source="Receive" target="Process">
+    <name>ticketData</name>
+  </line>
+  <line type="infoFlow" source="Split" target="Authorize">
+    <name>contracts</name>
+  </line>
+  <line type="infoFlow" source="Calculate" target="Send">
+    <name>price</name>
+  </line>
+</FAM>
